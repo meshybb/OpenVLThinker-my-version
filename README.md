@@ -1,108 +1,124 @@
-<div align="center">
+# OpenVLThinkerV2: A Generalist Multimodal Reasoning Model for Multi-domain Visual Tasks
 
-<h1>OpenVLThinker: Complex Vision-Language Reasoning via Iterative SFT-RL Cycles</h1>
 
 <p align="center">
-  <a href="https://huggingface.co/collections/ydeng9/openvlthinker-v12-models-686f4632c23b59379c475169">🤗Models</a> • <a href="https://huggingface.co/collections/ydeng9/openvlthinker-v12-datasets-686f45e48d02e00b1585299e">🤗Data</a> • <a href="https://arxiv.org/abs/2503.17352">📄Paper</a>
+    <a href="https://gordonhu608.github.io">Wenbo Hu</a>,
+    <a href="https://openreview.net/profile?id=~Xin_Chen89">Xin Chen</a>,
+    <a href="https://openreview.net/profile?id=~Yan_Gao-Tian1">Yan Gao-Tian</a>,
+    <a href="https://yihe-deng.notion.site/Yihe-Deng-167ab2d2c1fb80b3a76dfb120f716c84">Yihe Deng</a>,
+    <a href="https://violetpeng.github.io/">Nanyun Peng</a>,
+    <a href="https://web.cs.ucla.edu/~kwchang/">Kai-Wei Chang</a>
 </p>
 
+
+<p align="center">
+  <a href="https://arxiv.org/pdf/2604.08539">📑 Paper</a>  |
+  <a href="https://arxiv.org/abs/2604.08539">📖 arXiv</a>  |
+  <a href="https://gordonhu608.github.io/openvlthinkerv2.github.io">🌐 Homepage</a> |
+  <a href="https://huggingface.co/">🤗 Model (Coming)</a>
+</p>
+
+## 🏠 About
+<div style="text-align: center;">
+    <img src="assets/method.png" alt="Dialogue_Teaser" width=100% >
+</div>
+    We present <b>OpenVLThinkerV2</b>, a robust, general-purpose multimodal model. 
+    understanding tasks. Our model is trained with <b>G<sup>2</sup>RPO</b>, a novel RL training objective that replaces linear scaling with non-
+    linear distributional matching. 
+    By enforcing a Gaussian topology, <b>G<sup>2</sup>RPO</b> provides 1) intrinsic robustness to outliers, 2) symmetric updates for positive and negative rewards, and 3) uniform variance across diverse tasks.
+
+
+<div style="text-align: center;">
+    <img src="assets/shaping.png" alt="Dialogue_Teaser" width=100% >
+</div>
+We further introduce task-level response length and entropy shaping mechanisms to balance perception and multi-step reasoning. These dynamic bounds encourages early response length convergence and effectively preventing both entropy collapse and explosion.
+
+## 🏆 Performance
+
+Our model obtains significant performance gains after training on the baseline Qwen3-VL-Instruct-8B across diverse visual tasks. For instance, OpenVLThinkerV2 achieves $71.6\%$ on MMMU and $79.5\%$ on MathVista, surpassing GPT-4o by a significant margin. Furthermore, across six distinct benchmarks evaluating document understanding and spatial reasoning, OpenVLThinkerV2 significantly outperforms proprietary frontier models, including GPT-5 and Gemini 2.5 Pro.
+
+
+<div align="center">
+  <img src="assets/performance.png" alt="Descriptive alt text" width="90%">
 </div>
 
-We maintain our initially released model here: [Legacy model: OpenVLThinker-v1.0](https://huggingface.co/ydeng9/OpenVLThinker-7B), with our initial exploratory [blog](https://yihe-deng.notion.site/openvlthinker).
 
-Authors: [Yihe Deng](https://yihe-deng.notion.site/yihe-deng-main), [Hritik Bansal](https://sites.google.com/view/hbansal), [Fan Yin](https://fanyin3639.github.io/), [Nanyun Peng](https://violetpeng.github.io/), [Wei Wang](https://web.cs.ucla.edu/~weiwang/), [Kai-Wei Chang](https://web.cs.ucla.edu/~kwchang/)
 
-Our study investigates whether R1-like reasoning capabilities can be successfully integrated into large vision-language models (LVLMs) and assesses their impact on challenging multimodal reasoning tasks. We consider an approach that iteratively leverages supervised fine-tuning (SFT) on lightweight training data and Reinforcement Learning (RL) to further improve model generalization. 
+## 📢 News
 
-As an early result, we present OpenVLThinker, a LVLM exhibiting consistently improved reasoning performance on challenging benchmarks such as MathVista, MathVerse, and MathVision.
+- [Coming!] 📝 We will release the checkpoint of OpenVLThinkerV2 after the model trained with Cold-Start SFT. Our current results can be achieved by directly RL from Qwen3-VL-8B. Stay tuned for our stronger version! 
+- [2026-04-10] 🔥 We release the example training and validation data in the [data folder](example_data).
+- [2026-04-10] 🔥 We release the training and evaluation code.
+- [2026-04-10] 🔥 We release the [paper](https://arxiv.org/pdf/2604.08539) of OpenVLThinkerV2.
 
-<p align="center">
-<img src="./assets/demo-vlthinker.png" width="700">
-</p>
 
-## Training
 
-OpenVLThinker is iteratively trained in two main stages: Supervised Fine-Tuning (SFT) followed by Reinforcement Learning (RL). The instructions for replicating the training process are located in their respective subdirectories.
-
-### 1. Supervised Fine-Tuning (SFT)
-
-This process is managed using the LLaMA-Factory framework. For complete setup and training instructions, please refer to the SFT README:
-**➡️ [SFT Training Instructions](./train/llama-factory/README.md)**
-
-### 2. Reinforcement Learning (RL)
-
-This process is based on the EasyR1 framework. For detailed steps on running the two-stage RL training, please see the RL README:
-**➡️ [RL Training Instructions](./train/easyr1/README.md)**
-
-## Evaluation
-
-Our model has been evaluated on several challenging benchmarks:
-
-- Math reasoning: MathVista, MathVerse, MathVision
-- General reasoning: MMMU-Pro, EMMA
-- Perception: HallusionBench
-
-<p align="center">
-<img src="./assets/overview.png" width="900">
-</p>
-
-Necessary packages
-```bash
-pip install qwen_vl_utils
-pip install mathruler
-```
-
-### Run Evaluation
-
-We provide two evaluation scripts to handle different answer formats:
-
-1. For OpenVLThinker evaluation:
+## 📐 Set up
 
 ```bash
-python evaluation/eval_openvlthinker.py --dataset mathvista
+git clone https://github.com/uclanlp/OpenVLThinker.git
+cd OpenVLThinker
+conda create -n easyr1 python=3.11 
+conda activate easyr1
+cd EasyR1
+pip install -e .
 ```
+For more details for the RL environment installation, please refer to  [EasyR1](https://github.com/hiyouga/EasyR1).
 
-2. For Qwen2.5-VL evaluation:
+
+## 🚀 Training
 
 ```bash
-python evaluation/eval_qwen.py --dataset mathvista
+bash ./EasyR1/local_scripts/run_g2rpo_rl_slurm.sh
 ```
 
-An optional `--cuda` argument can be used to specify the GPU device (e.g., `--cuda 0`). The evaluation results, including a detailed JSON report, will be saved in the `./evaluation/outputs` directory.
+We provide example training and validation sample data [here](example_data). The original images in training data can be found in this [work](https://huggingface.co/datasets/OneThink/OneThinker-train-data).
 
-### Datasets
-Evaluation supports 
-- `mathvista`, 
-- `mathverse`, 
-- `mathvision`
-- EMMA (`emma-math`,`emma-chem`, `emma-code`, `emma-physics`)
-- MMMU (`mmmu-pro-vision`, `mmmu-pro-4`, `mmmu-pro-10`)
-- `hallusionbench`
+Furthermore, our training process supports multi-task validation with separate scores for each task. To add more validation dataset for various tasks, please add them [here](EasyR1/local_scripts/run_g2rpo_rl_slurm.sh#L15) and update your task keys in this [file](EasyR1/verl/trainer/data_loader.py#L153).
 
-### Special Case: MathVerse Evaluation
 
-Due to the free-form nature of the MathVerse benchmark, we use GPT-4V to verify the model's responses. After generating the output file with the command above, run the verification script:
 
-```bash
-python evaluation/verify_mathverse_gpt4.py \
-    --responses_file ./evaluation/outputs/mathverse_OpenVLThinker-v1.2.json 
+## 🔮 Inference & Evaluation
+Since OpenVLThinkerV2 shares the same architecture as Qwen3-VL-8B, it naturally supports easy and efficient inference.
+
+We adopt [VLMEvalKit](https://github.com/open-compass/vlmevalkit) for most of our evaluation. For grounding task, we follow evaluation scripts in [OneThinker](https://github.com/tulerfeng/OneThinker/blob/main/Evaluation/Eval/eval_bench_all.sh). Please follow them for specific evaluation setups. 
+
+
+## VeRL G<sup>2</sup>RPO Implementation
+
+Please refer to the [core_algos.py](EasyR1/verl/trainer/core_algos.py#L220)
+
+```python
+@register_adv_estimator(AdvantageEstimator.GS_GRPO) 
+def compute_pertask_gaussian_outcome_advantage_grpo
 ```
 
-**Note**: This requires an OPENAI_API_KEY to be set in your environment variables.
+We also support our Gaussian Advantage Normalization method in GDPO, please see Gaussian (GS) GDPO: 
+```python
+@register_adv_estimator(AdvantageEstimator.GS_GDPO) 
+def compute_pertask_gaussian_outcome_advantage_gdpo
+```
 
-## Citation
-```text
-@misc{deng2025openvlthinker,
-      title={OpenVLThinker: An Early Exploration to Complex Vision-Language Reasoning via Iterative Self-Improvement}, 
-      author={Yihe Deng and Hritik Bansal and Fan Yin and Nanyun Peng and Wei Wang and Kai-Wei Chang},
-      year={2025},
-      eprint={2503.17352},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2503.17352}, 
+These can be changed at the config [file](EasyR1/examples/config_g2rpo.yaml#L26).
+
+## 🔗 Citation
+
+If you find our work helpful for your research, please consider citing our work.   
+
+```
+@article{hu2026openvlthinkerv2generalistmultimodalreasoning,
+      title={OpenVLThinkerV2: A Generalist Multimodal Reasoning Model for Multi-domain Visual Tasks}, 
+      author={Wenbo Hu and Xin Chen and Yan Gao-Tian and Yihe Deng and Nanyun Peng and Kai-Wei Chang},
+      year={2026},
+      journal={arXiv preprint arXiv:2604.08539},
+      url={https://arxiv.org/abs/2604.08539}, 
 }
 ```
 
-## Acknowledgments
+## 📄 License
+OpenVLThinkerV2 is licensed under the Apache 2.0.
 
-We thank [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) and [EasyR1](https://github.com/hiyouga/EasyR1) for open-sourcing the model training frameworks that we used in this work.
+
+## 👏 Acknowledgements
+
+We sincerely appreciate the contributions of the open-source community. The related projects are as follows: [EasyR1](https://github.com/hiyouga/EasyR1), [verl](https://github.com/volcengine/verl), [VLMEvalKit](https://github.com/open-compass/VLMEvalKit),  [OneThinker](https://github.com/tulerfeng/OneThinker).
