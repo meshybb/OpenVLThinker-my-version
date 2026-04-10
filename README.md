@@ -20,7 +20,7 @@
 
 ## 🏠 About
 <div style="text-align: center;">
-    <img src="images/method.png" alt="Dialogue_Teaser" width=100% >
+    <img src="assets/method.png" alt="Dialogue_Teaser" width=100% >
 </div>
     We present <b>OpenVLThinkerV2</b>, a robust, general-purpose multimodal model. 
     understanding tasks. Our model is trained with <b>G<sup>2</sup>RPO</b>, a novel RL training objective that replaces linear scaling with non-
@@ -29,7 +29,7 @@
 
 
 <div style="text-align: center;">
-    <img src="images/shaping.png" alt="Dialogue_Teaser" width=100% >
+    <img src="assets/shaping.png" alt="Dialogue_Teaser" width=100% >
 </div>
 We further introduce task-level response length and entropy shaping mechanisms to balance perception and multi-step reasoning. These dynamic bounds encourages early response length convergence and effectively preventing both entropy collapse and explosion.
 
@@ -39,7 +39,7 @@ Our model obtains significant performance gains after training on the baseline Q
 
 
 <div align="center">
-  <img src="images/performance.png" alt="Descriptive alt text" width="90%">
+  <img src="assets/performance.png" alt="Descriptive alt text" width="90%">
 </div>
 
 
