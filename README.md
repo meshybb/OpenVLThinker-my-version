@@ -76,6 +76,8 @@ We provide example training and validation sample data [here](example_data). The
 
 Furthermore, our training process supports multi-task validation with separate scores for each task. To add more validation dataset for various tasks, please add them [here](EasyR1/local_scripts/run_g2rpo_rl_slurm.sh#L15) and update your task keys in this [file](EasyR1/verl/trainer/data_loader.py#L153).
 
+For RL training code on AWS Trainium instances, please refer to our specific example [repo](https://github.com/YGaotian/EasyR1-Trainium).
+
 
 
 ## 🔮 Inference & Evaluation
