@@ -16,6 +16,7 @@
   <a href="https://arxiv.org/abs/2604.08539">📖 arXiv</a>  |
   <a href="https://gordonhu608.github.io/openvlthinkerv2.github.io">🌐 Homepage</a> |
   <a href="https://huggingface.co/">🤗 Model (Coming)</a>
+  <a href="https://huggingface.co/papers/2604.08539">🤗 HF Daily Paper</a>
 </p>
 
 ## 🏠 About
