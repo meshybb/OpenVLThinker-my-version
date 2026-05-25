@@ -1,0 +1,222 @@
+[
+    {
+        "choices": NaN,
+        "answer": "<answer>7</answer>",
+        "answer_type": "integer",
+        "index": 330,
+        "category": "math-targeted-vqa",
+        "context": "synthetic scene",
+        "skills": "['arithmetic reasoning']",
+        "source": "CLEVR-Math",
+        "task": "math word problem",
+        "answer_option": NaN,
+        "problem_id": 330,
+        "images": [
+            "MathVista_MINI/330.jpg"
+        ],
+        "data_type": "image",
+        "problem": "<image> Hint: Please answer the question requiring an integer answer and provide the final value, e.g., 1, 2, 3, at the end.\nQuestion: Subtract all tiny cubes. Subtract all brown balls. How many objects are left?",
+        "problem_type": "math",
+        "data_source": "mathvista_mini",
+        "problem_reserved_text": "Hint: Please answer the question requiring an integer answer and provide the final value, e.g., 1, 2, 3, at the end.\nQuestion: Subtract all tiny cubes. Subtract all brown balls. How many objects are left?",
+        "task_type": "math_reasoning"
+    },
+    {
+        "choices": "['Unable to determine.', 'Nothing would happen.', 'It would also decrease.', 'It would increase.']",
+        "answer": "<answer>C</answer>",
+        "answer_type": "text",
+        "index": 915,
+        "category": "general-vqa",
+        "context": "scientific figure",
+        "skills": "['scientific reasoning']",
+        "source": "TQA",
+        "task": "textbook question answering",
+        "answer_option": "C",
+        "problem_id": 915,
+        "images": [
+            "MathVista_MINI/915.jpg"
+        ],
+        "data_type": "image",
+        "problem": "<image> Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What would happen to the Lion population if the Gum Tree population decreased?\nChoices:\n(A) Unable to determine.\n(B) Nothing would happen.\n(C) It would also decrease.\n(D) It would increase.",
+        "problem_type": "multiple choice",
+        "data_source": "mathvista_mini",
+        "problem_reserved_text": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What would happen to the Lion population if the Gum Tree population decreased?\nChoices:\n(A) Unable to determine.\n(B) Nothing would happen.\n(C) It would also decrease.\n(D) It would increase.",
+        "task_type": "math_reasoning"
+    },
+    {
+        "choices": "['20.25', '21', '27', '36']",
+        "answer": "<answer>A</answer>",
+        "answer_type": "text",
+        "index": 410,
+        "category": "math-targeted-vqa",
+        "context": "geometry diagram",
+        "skills": "['geometry reasoning', 'algebraic reasoning']",
+        "source": "Geometry3K",
+        "task": "geometry problem solving",
+        "answer_option": "A",
+        "problem_id": 410,
+        "images": [
+            "MathVista_MINI/410.jpg"
+        ],
+        "data_type": "image",
+        "problem": "<image> Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Find the perimeter of  $\\triangle D E F,$ if $\\triangle D E F \\sim \\triangle C B F,$ perimeter of $\\triangle C B F=27, D F=6,$ and $F C=8$\nChoices:\n(A) 20.25\n(B) 21\n(C) 27\n(D) 36",
+        "problem_type": "multiple choice",
+        "data_source": "mathvista_mini",
+        "problem_reserved_text": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Find the perimeter of  $\\triangle D E F,$ if $\\triangle D E F \\sim \\triangle C B F,$ perimeter of $\\triangle C B F=27, D F=6,$ and $F C=8$\nChoices:\n(A) 20.25\n(B) 21\n(C) 27\n(D) 36",
+        "task_type": "math_reasoning"
+    },
+    {
+        "choices": "['herring', 'kril', 'anchovy', 'phytoplankton']",
+        "answer": "<answer>B</answer>",
+        "answer_type": "text",
+        "index": 515,
+        "category": "general-vqa",
+        "context": "scientific figure",
+        "skills": "['scientific reasoning']",
+        "source": "TQA",
+        "task": "textbook question answering",
+        "answer_option": "B",
+        "problem_id": 515,
+        "images": [
+            "MathVista_MINI/515.jpg"
+        ],
+        "data_type": "image",
+        "problem": "<image> Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: You would potentially see a decrease in which organism if gulls disappeared?\nChoices:\n(A) herring\n(B) kril\n(C) anchovy\n(D) phytoplankton",
+        "problem_type": "multiple choice",
+        "data_source": "mathvista_mini",
+        "problem_reserved_text": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: You would potentially see a decrease in which organism if gulls disappeared?\nChoices:\n(A) herring\n(B) kril\n(C) anchovy\n(D) phytoplankton",
+        "task_type": "math_reasoning"
+    },
+    {
+        "choices": "['Rabbit', 'Deer', 'Frogs', 'Wolf']",
+        "answer": "<answer>C</answer>",
+        "answer_type": "text",
+        "index": 402,
+        "category": "general-vqa",
+        "context": "scientific figure",
+        "skills": "['scientific reasoning']",
+        "source": "AI2D",
+        "task": "textbook question answering",
+        "answer_option": "C",
+        "problem_id": 402,
+        "images": [
+            "MathVista_MINI/402.jpg"
+        ],
+        "data_type": "image",
+        "problem": "<image> Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: From the food chain diagram below, which animal would most directly lack food if Grasshoppers get exterminated?\nChoices:\n(A) Rabbit\n(B) Deer\n(C) Frogs\n(D) Wolf",
+        "problem_type": "multiple choice",
+        "data_source": "mathvista_mini",
+        "problem_reserved_text": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: From the food chain diagram below, which animal would most directly lack food if Grasshoppers get exterminated?\nChoices:\n(A) Rabbit\n(B) Deer\n(C) Frogs\n(D) Wolf",
+        "task_type": "math_reasoning"
+    },
+    {
+        "choices": "['neither; the samples have the same temperature', 'sample B', 'sample A']",
+        "answer": "<answer>B</answer>",
+        "answer_type": "text",
+        "index": 147,
+        "category": "general-vqa",
+        "context": "scientific figure",
+        "skills": "['scientific reasoning']",
+        "source": "ScienceQA",
+        "task": "textbook question answering",
+        "answer_option": "B",
+        "problem_id": 147,
+        "images": [
+            "MathVista_MINI/147.jpg"
+        ],
+        "data_type": "image",
+        "problem": "<image> Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: The diagrams below show two pure samples of gas in identical closed, rigid containers. Each colored ball represents one gas particle. Both samples have the same number of particles. Compare the average kinetic energies of the particles in each sample. Which sample has the higher temperature?\nChoices:\n(A) neither; the samples have the same temperature\n(B) sample B\n(C) sample A",
+        "problem_type": "multiple choice",
+        "data_source": "mathvista_mini",
+        "problem_reserved_text": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: The diagrams below show two pure samples of gas in identical closed, rigid containers. Each colored ball represents one gas particle. Both samples have the same number of particles. Compare the average kinetic energies of the particles in each sample. Which sample has the higher temperature?\nChoices:\n(A) neither; the samples have the same temperature\n(B) sample B\n(C) sample A",
+        "task_type": "math_reasoning"
+    },
+    {
+        "choices": "['0.6', '0.8', '0.75', '\\\\frac{4}{3}']",
+        "answer": "<answer>A</answer>",
+        "answer_type": "text",
+        "index": 425,
+        "category": "math-targeted-vqa",
+        "context": "geometry diagram",
+        "skills": "['geometry reasoning', 'algebraic reasoning']",
+        "source": "GeoQA+",
+        "task": "geometry problem solving",
+        "answer_option": "A",
+        "problem_id": 425,
+        "images": [
+            "MathVista_MINI/425.jpg"
+        ],
+        "data_type": "image",
+        "problem": "<image> Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: \u5728Rt\u25b3ABC\u4e2d\uff0c\u2220C\uff1d90\u00b0\uff0c\u82e5AC\uff1d6\uff0cBC\uff1d8\uff0c\u5219cosA\u7684\u503c\u4e3a\uff08\uff09\nChoices:\n(A) 0.6\n(B) 0.8\n(C) 0.75\n(D) \\frac{4}{3}",
+        "problem_type": "multiple choice",
+        "data_source": "mathvista_mini",
+        "problem_reserved_text": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: \u5728Rt\u25b3ABC\u4e2d\uff0c\u2220C\uff1d90\u00b0\uff0c\u82e5AC\uff1d6\uff0cBC\uff1d8\uff0c\u5219cosA\u7684\u503c\u4e3a\uff08\uff09\nChoices:\n(A) 0.6\n(B) 0.8\n(C) 0.75\n(D) \\frac{4}{3}",
+        "task_type": "math_reasoning"
+    },
+    {
+        "choices": NaN,
+        "answer": "<answer>10</answer>",
+        "answer_type": "integer",
+        "index": 597,
+        "category": "general-vqa",
+        "context": "bar chart",
+        "skills": "['statistical reasoning']",
+        "source": "DVQA",
+        "task": "figure question answering",
+        "answer_option": NaN,
+        "problem_id": 597,
+        "images": [
+            "MathVista_MINI/597.jpg"
+        ],
+        "data_type": "image",
+        "problem": "<image> Hint: Please answer the question requiring an integer answer and provide the final value, e.g., 1, 2, 3, at the end.\nQuestion: What percentage of people prefer the least preferred object?",
+        "problem_type": "math",
+        "data_source": "mathvista_mini",
+        "problem_reserved_text": "Hint: Please answer the question requiring an integer answer and provide the final value, e.g., 1, 2, 3, at the end.\nQuestion: What percentage of people prefer the least preferred object?",
+        "task_type": "math_reasoning"
+    },
+    {
+        "choices": "['A, R, N', 'R, D, N', 'I, A, M', 'H, O, W']",
+        "answer": "<answer>B</answer>",
+        "answer_type": "text",
+        "index": 958,
+        "category": "math-targeted-vqa",
+        "context": "puzzle test",
+        "skills": "['logical reasoning']",
+        "source": "IQTest",
+        "task": "figure question answering",
+        "answer_option": "B",
+        "problem_id": 958,
+        "images": [
+            "MathVista_MINI/958.jpg"
+        ],
+        "data_type": "image",
+        "problem": "<image> Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Choose the missing letters from below to form a word, using all letters presented\nChoices:\n(A) A, R, N\n(B) R, D, N\n(C) I, A, M\n(D) H, O, W",
+        "problem_type": "multiple choice",
+        "data_source": "mathvista_mini",
+        "problem_reserved_text": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Choose the missing letters from below to form a word, using all letters presented\nChoices:\n(A) A, R, N\n(B) R, D, N\n(C) I, A, M\n(D) H, O, W",
+        "task_type": "math_reasoning"
+    },
+    {
+        "choices": NaN,
+        "answer": "<answer>15</answer>",
+        "answer_type": "integer",
+        "index": 883,
+        "category": "math-targeted-vqa",
+        "context": "puzzle test",
+        "skills": "['logical reasoning', 'arithmetic reasoning']",
+        "source": "IQTest",
+        "task": "figure question answering",
+        "answer_option": NaN,
+        "problem_id": 883,
+        "images": [
+            "MathVista_MINI/883.jpg"
+        ],
+        "data_type": "image",
+        "problem": "<image> Hint: Please answer the question requiring an integer answer and provide the final value, e.g., 1, 2, 3, at the end.\nQuestion: Which number is missing?",
+        "problem_type": "math",
+        "data_source": "mathvista_mini",
+        "problem_reserved_text": "Hint: Please answer the question requiring an integer answer and provide the final value, e.g., 1, 2, 3, at the end.\nQuestion: Which number is missing?",
+        "task_type": "math_reasoning"
+    }
+]

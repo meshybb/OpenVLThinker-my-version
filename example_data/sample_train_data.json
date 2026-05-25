@@ -1,0 +1,926 @@
+[
+    {
+        "problem_id": 7,
+        "problem": "<image> Please provide the bounding box coordinate of the region this sentence describes: a lady wearing a rice picking hat and a blue shirt.",
+        "data_type": "image",
+        "problem_type": "spatial grounding",
+        "options": [],
+        "data_source": "RefCOCOg",
+        "answer": "<answer>{\"boxes\": [577, 232, 899, 786]}</answer>",
+        "images": [
+            "./Spatial-Grounding/train2014/COCO_train2014_000000355231.jpg"
+        ],
+        "problem_reserved_text": "Please provide the bounding box coordinate of the region this sentence describes: a lady wearing a rice picking hat and a blue shirt.",
+        "task_type": "spatial_grounding"
+    },
+    {
+        "problem_id": 34,
+        "problem": "<image> How many bicycles are visible in the image?",
+        "data_type": "image",
+        "problem_type": "numerical",
+        "options": [],
+        "data_source": "Super-CLEVR",
+        "answer": "<answer>3</answer>",
+        "images": [
+            "./QA/Math/Super-CLEVR/images/superCLEVR_new_000908.png"
+        ],
+        "problem_reserved_text": "How many bicycles are visible in the image?",
+        "task_type": "spatial_reasoning"
+    },
+    {
+        "problem_id": 30,
+        "problem": "<image> What is located under the sheets hanging off the end of the bed?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. clothing",
+            "B. dogs",
+            "C. human",
+            "D. bedding"
+        ],
+        "data_source": "A-OKVQA",
+        "answer": "<answer>C</answer>",
+        "images": [
+            "./QA/General/A-OKVQA/images/359507.jpg"
+        ],
+        "problem_reserved_text": "What is located under the sheets hanging off the end of the bed?",
+        "task_type": "general_vqa_science_stem"
+    },
+    {
+        "problem_id": 310,
+        "problem": "<image> Does the first symbol in the legend represent the smallest category ?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. No",
+            "B. Yes"
+        ],
+        "data_source": "MapQA",
+        "answer": "<answer>A</answer>",
+        "images": [
+            "./QA/Chart/MapQA/images/map_4272.png"
+        ],
+        "problem_reserved_text": "Does the first symbol in the legend represent the smallest category ?",
+        "task_type": "chart_figure_qa"
+    },
+    {
+        "problem_id": 35,
+        "problem": "<image> As shown in the figure, the planes of $$\\triangle ABC$$ and $$\\triangle BCD$$ are perpendicular to each other, $$\\angle ABC=\\angle BCD=90^{\\circ}$$, $$AB=a$$, $$BC=b$$, $$CD=c$$, and $$a^{2}+b^{2}+c^{2}=1$$. What is the surface area of the circumscribed sphere of the tetrahedron $$A-BCD$$?",
+        "data_type": "image",
+        "problem_type": "math",
+        "options": [],
+        "data_source": "ARES",
+        "answer": "<answer>$$\\pi $$</answer>",
+        "images": [
+            "./QA/Math/ARES/images/29340.png"
+        ],
+        "problem_reserved_text": "As shown in the figure, the planes of $$\\triangle ABC$$ and $$\\triangle BCD$$ are perpendicular to each other, $$\\angle ABC=\\angle BCD=90^{\\circ}$$, $$AB=a$$, $$BC=b$$, $$CD=c$$, and $$a^{2}+b^{2}+c^{2}=1$$. What is the surface area of the circumscribed sphere of the tetrahedron $$A-BCD$$?",
+        "task_type": "math_reasoning"
+    },
+    {
+        "problem_id": 8,
+        "problem": "<image> What's the total of good imports in teh UK in 2020/21 of Unspecified Goal or Animal and Vegatiable oils and fats?",
+        "data_type": "image",
+        "problem_type": "math",
+        "options": [],
+        "data_source": "ARES",
+        "answer": "<answer>8657</answer>",
+        "images": [
+            "./QA/Math/ARES/images/3279.png"
+        ],
+        "problem_reserved_text": "What's the total of good imports in teh UK in 2020/21 of Unspecified Goal or Animal and Vegatiable oils and fats?",
+        "task_type": "math_reasoning"
+    },
+    {
+        "problem_id": 136,
+        "problem": "<image> Please provide the bounding box coordinate of the region this sentence describes: black box by hand.",
+        "data_type": "image",
+        "problem_type": "spatial grounding",
+        "options": [],
+        "data_source": "RefCOCOp",
+        "answer": "<answer>{\"boxes\": [128, 444, 464, 662]}</answer>",
+        "images": [
+            "./Spatial-Grounding/train2014/COCO_train2014_000000350013.jpg"
+        ],
+        "problem_reserved_text": "Please provide the bounding box coordinate of the region this sentence describes: black box by hand.",
+        "task_type": "spatial_grounding"
+    },
+    {
+        "problem_id": 62,
+        "problem": "<image> As shown in the figure, $AB//DE$, and $AE$ intersects $BD$ at point $C$. If $AC=4$, $BC=2$, and $CD=1$, then the length of $CE$ is.",
+        "data_type": "image",
+        "problem_type": "math",
+        "options": [],
+        "data_source": "MMK12",
+        "answer": "<answer>2</answer>",
+        "images": [
+            "./QA/Math/MMK12/train-00001-of-00003/2651.png"
+        ],
+        "problem_reserved_text": "As shown in the figure, $AB//DE$, and $AE$ intersects $BD$ at point $C$. If $AC=4$, $BC=2$, and $CD=1$, then the length of $CE$ is.",
+        "task_type": "math_reasoning"
+    },
+    {
+        "problem_id": 19,
+        "problem": "<image> As shown in the figure, in $\\vartriangle ABC$, $AB=BC=1$, $\\angle ABD=\\frac{\\pi }{4}$, $\\tan \\angle CBD=7$, then $BD=$.",
+        "data_type": "image",
+        "problem_type": "math",
+        "options": [],
+        "data_source": "ARES",
+        "answer": "<answer>$\\frac{\\sqrt{2}}{3}$</answer>",
+        "images": [
+            "./QA/Math/ARES/images/36132.png"
+        ],
+        "problem_reserved_text": "As shown in the figure, in $\\vartriangle ABC$, $AB=BC=1$, $\\angle ABD=\\frac{\\pi }{4}$, $\\tan \\angle CBD=7$, then $BD=$.",
+        "task_type": "math_reasoning"
+    },
+    {
+        "problem_id": 199,
+        "problem": "<image> Which region in the diagram represents this part of the ear?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. b",
+            "B. l",
+            "C. r",
+            "D. i"
+        ],
+        "data_source": "AI2D",
+        "answer": "<answer>C</answer>",
+        "images": [
+            "./QA/Knowledge/AI2D/images/2866.png"
+        ],
+        "problem_reserved_text": "Which region in the diagram represents this part of the ear?",
+        "task_type": "chart_figure_qa"
+    },
+    {
+        "problem_id": 194,
+        "problem": "<image> Please write out the expression of the formula in the image using LaTeX format.",
+        "data_type": "image",
+        "problem_type": "OCR",
+        "options": [],
+        "data_source": "chrome_writting",
+        "answer": "<answer>u ( x - x _ { 0 } ) + v ( y - y _ { 0 } ) = 0</answer>",
+        "images": [
+            "./QA/OCR/ChromeWriting/identity_94.png"
+        ],
+        "problem_reserved_text": "Please write out the expression of the formula in the image using LaTeX format.",
+        "task_type": "ocr"
+    },
+    {
+        "problem_id": 516,
+        "problem": "<image> What is the average of Yes, I am  bars ?",
+        "data_type": "image",
+        "problem_type": "numerical",
+        "options": [],
+        "data_source": "ChartQA",
+        "answer": "<answer>40.33</answer>",
+        "images": [
+            "./QA/Chart/ChartQA/images/multi_col_20952.png"
+        ],
+        "problem_reserved_text": "What is the average of Yes, I am  bars ?",
+        "task_type": "chart_figure_qa"
+    },
+    {
+        "problem_id": 172,
+        "problem": "<image> Is the woman in yellow vest looking at laptop screen positioned in front of the man in yellow vest looking at woman in yellow vest?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "data_source": "Spacellava",
+        "answer": "<answer>B</answer>",
+        "images": [
+            "./QA/Spatial/Spacellava/image_3299.png"
+        ],
+        "problem_reserved_text": "Is the woman in yellow vest looking at laptop screen positioned in front of the man in yellow vest looking at woman in yellow vest?",
+        "task_type": "spatial_reasoning"
+    },
+    {
+        "problem_id": 395,
+        "problem": "<image> How many countries' data are represented in the graph?",
+        "data_type": "image",
+        "problem_type": "numerical",
+        "options": [],
+        "data_source": "PlotQA",
+        "answer": "<answer>3</answer>",
+        "images": [
+            "./QA/Chart/PlotQA/images/123570.png"
+        ],
+        "problem_reserved_text": "How many countries' data are represented in the graph?",
+        "task_type": "chart_figure_qa"
+    },
+    {
+        "problem_id": 176,
+        "problem": "<image> Can you tell me the horizontal distance of the man holding tablet in hands from the man wearing orange vest? Please measure it in centimeters.",
+        "data_type": "image",
+        "problem_type": "regression",
+        "options": [],
+        "data_source": "Spacellava",
+        "answer": "<answer>0.0</answer>",
+        "images": [
+            "./QA/Spatial/Spacellava/image_11538.png"
+        ],
+        "problem_reserved_text": "Can you tell me the horizontal distance of the man holding tablet in hands from the man wearing orange vest? Please measure it in centimeters.",
+        "task_type": "spatial_reasoning"
+    },
+    {
+        "problem_id": 38,
+        "problem": "<image> Arrange positive integers according to the pattern shown in the figure. If the ordered pair $$(m,n)$$ represents the $$n$$th number from left to right in the $$m$$th row from top to bottom, for example, $$(4,2)$$ represents the integer $$8$$, then $$(11,5)$$ represents the number ______.",
+        "data_type": "image",
+        "problem_type": "math",
+        "options": [],
+        "data_source": "MMK12",
+        "answer": "<answer>$$60$$</answer>",
+        "images": [
+            "./QA/Math/MMK12/train-00002-of-00003/2585.png"
+        ],
+        "problem_reserved_text": "Arrange positive integers according to the pattern shown in the figure. If the ordered pair $$(m,n)$$ represents the $$n$$th number from left to right in the $$m$$th row from top to bottom, for example, $$(4,2)$$ represents the integer $$8$$, then $$(11,5)$$ represents the number ______.",
+        "task_type": "math_reasoning"
+    },
+    {
+        "problem_id": 119,
+        "problem": "<image> Please provide the bounding box coordinate of the region this sentence describes: grey monitor to left of television.",
+        "data_type": "image",
+        "problem_type": "spatial grounding",
+        "options": [],
+        "data_source": "RefCOCOg",
+        "answer": "<answer>{\"boxes\": [25, 141, 263, 424]}</answer>",
+        "images": [
+            "./Spatial-Grounding/train2014/COCO_train2014_000000284639.jpg"
+        ],
+        "problem_reserved_text": "Please provide the bounding box coordinate of the region this sentence describes: grey monitor to left of television.",
+        "task_type": "spatial_grounding"
+    },
+    {
+        "problem_id": 213,
+        "problem": "<image> Is the area under the curve for Pale Green the largest?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. no",
+            "B. yes"
+        ],
+        "data_source": "FigureQA",
+        "answer": "<answer>A</answer>",
+        "images": [
+            "./QA/Chart/FigureQA/images/85025.png"
+        ],
+        "problem_reserved_text": "Is the area under the curve for Pale Green the largest?",
+        "task_type": "chart_figure_qa"
+    },
+    {
+        "problem_id": 44,
+        "problem": "<image> What is the average DALY rate for the age group 50-69 years old over the period from 1990 to 2010?",
+        "data_type": "image",
+        "problem_type": "numerical",
+        "options": [],
+        "data_source": "ChartQA",
+        "answer": "<answer>2000</answer>",
+        "images": [
+            "./QA/Chart/ChartQA/images/04533011002348.png"
+        ],
+        "problem_reserved_text": "What is the average DALY rate for the age group 50-69 years old over the period from 1990 to 2010?",
+        "task_type": "chart_figure_qa"
+    },
+    {
+        "problem_id": 602,
+        "problem": "<image> Provide a one-sentence caption for the provided image.",
+        "data_type": "image",
+        "problem_type": "OCR",
+        "options": [],
+        "data_source": "textcaps",
+        "answer": "<answer>Kansas City Royals player 45 had a Storm Chasers logo on the front of his jersey as he headed onto the field with his glove.</answer>",
+        "images": [
+            "./QA/OCR/TextCaps/2dbb7910bd4860bd.png"
+        ],
+        "problem_reserved_text": "Provide a one-sentence caption for the provided image.",
+        "task_type": "ocr"
+    },
+    {
+        "problem_id": 174,
+        "problem": "<image> Please provide the bounding box coordinate of the region this sentence describes: suitcase next to tan couch.",
+        "data_type": "image",
+        "problem_type": "spatial grounding",
+        "options": [],
+        "data_source": "RefCOCO",
+        "answer": "<answer>{\"boxes\": [392, 173, 599, 740]}</answer>",
+        "images": [
+            "./Spatial-Grounding/train2014/COCO_train2014_000000358667.jpg"
+        ],
+        "problem_reserved_text": "Please provide the bounding box coordinate of the region this sentence describes: suitcase next to tan couch.",
+        "task_type": "spatial_grounding"
+    },
+    {
+        "problem_id": 102,
+        "problem": "<image> How many objects have wheels in the image?",
+        "data_type": "image",
+        "problem_type": "numerical",
+        "options": [],
+        "data_source": "Super-CLEVR",
+        "answer": "<answer>2</answer>",
+        "images": [
+            "./QA/Math/Super-CLEVR/images/superCLEVR_new_000987.png"
+        ],
+        "problem_reserved_text": "How many objects have wheels in the image?",
+        "task_type": "spatial_reasoning"
+    },
+    {
+        "problem_id": 67,
+        "problem": "<image> Which imaging method was used to detect the cystic mass at the anterior cervix?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. CT scan",
+            "B. MRI scan",
+            "C. X-ray",
+            "D. Ultrasonography."
+        ],
+        "data_source": "PMC-VQA",
+        "answer": "<answer>B</answer>",
+        "images": [
+            "./QA/Knowledge/PMC-VQA/images/PMC4155767_F1_318086.jpg"
+        ],
+        "problem_reserved_text": "Which imaging method was used to detect the cystic mass at the anterior cervix?",
+        "task_type": "general_vqa_science_stem"
+    },
+    {
+        "problem_id": 152,
+        "problem": "<image> What is the outermost layer of the structure?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. crust",
+            "B. mantle",
+            "C. none of the above",
+            "D. outer core"
+        ],
+        "data_source": "AI2D",
+        "answer": "<answer>A</answer>",
+        "images": [
+            "./QA/Knowledge/AI2D/images/641.png"
+        ],
+        "problem_reserved_text": "What is the outermost layer of the structure?",
+        "task_type": "chart_figure_qa"
+    },
+    {
+        "problem_id": 146,
+        "problem": "<image> Can you confirm if the cardboard boxes stacked on floor is positioned to the left of the red forklift in warehouse?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "data_source": "Spacellava",
+        "answer": "<answer>A</answer>",
+        "images": [
+            "./QA/Spatial/Spacellava/image_14873.png"
+        ],
+        "problem_reserved_text": "Can you confirm if the cardboard boxes stacked on floor is positioned to the left of the red forklift in warehouse?",
+        "task_type": "spatial_reasoning"
+    },
+    {
+        "problem_id": 72,
+        "problem": "<image> What does the variable \\( w_{SVM+} \\) in the upper plot of the figure represent?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A) The margin width in the privileged space.",
+            "B) The weight vector of the support vector machine in the privileged space.",
+            "C) The decision boundary in the input space.",
+            "D) The instance weight in the input space."
+        ],
+        "data_source": "ArxivQA",
+        "answer": "<answer>B</answer>",
+        "images": [
+            "./QA/Knowledge/ArxivQA/images/1306.3161_0.jpg"
+        ],
+        "problem_reserved_text": "What does the variable \\( w_{SVM+} \\) in the upper plot of the figure represent?",
+        "task_type": "general_vqa_science_stem"
+    },
+    {
+        "problem_id": 28,
+        "problem": "<image> Given the universal set $U=R$, the correct Venn diagram representing the relationship between the sets $M=\\left\\{ -1,0,1 \\right\\}$ and $N=\\left\\{ x|{{x}^{2}}+x=0 \\right\\}$ is (fill in the number).",
+        "data_type": "image",
+        "problem_type": "math",
+        "options": [],
+        "data_source": "ARES",
+        "answer": "<answer>2</answer>",
+        "images": [
+            "./QA/Math/ARES/images/32182.png"
+        ],
+        "problem_reserved_text": "Given the universal set $U=R$, the correct Venn diagram representing the relationship between the sets $M=\\left\\{ -1,0,1 \\right\\}$ and $N=\\left\\{ x|{{x}^{2}}+x=0 \\right\\}$ is (fill in the number).",
+        "task_type": "math_reasoning"
+    },
+    {
+        "problem_id": 253,
+        "problem": "<image> Extract text from the given image.",
+        "data_type": "image",
+        "problem_type": "OCR",
+        "options": [],
+        "data_source": "iam(cauldron)",
+        "answer": "<answer>\" I think so.</answer>",
+        "images": [
+            "./QA/OCR/IAM/cauldron/iam/images/iam_00005233.png"
+        ],
+        "problem_reserved_text": "Extract text from the given image.",
+        "task_type": "ocr"
+    },
+    {
+        "problem_id": 61,
+        "problem": "<image> Is the long dark hair camera closer to the viewer compared to the leaves with the ground?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "data_source": "OpenSpaces",
+        "answer": "<answer>B</answer>",
+        "images": [
+            "./QA/Spatial/OpenSpaces/image_4504.png"
+        ],
+        "problem_reserved_text": "Is the long dark hair camera closer to the viewer compared to the leaves with the ground?",
+        "task_type": "spatial_reasoning"
+    },
+    {
+        "problem_id": 574,
+        "problem": "<image> Please write out the expression of the formula in the image using LaTeX format.",
+        "data_type": "image",
+        "problem_type": "OCR",
+        "options": [],
+        "data_source": "chrome_writting",
+        "answer": "<answer>( C )</answer>",
+        "images": [
+            "./QA/OCR/ChromeWriting/identity_3721.png"
+        ],
+        "problem_reserved_text": "Please write out the expression of the formula in the image using LaTeX format.",
+        "task_type": "ocr"
+    },
+    {
+        "problem_id": 39,
+        "problem": "<image> Is Midnight Blue the median with the highest value?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. no",
+            "B. yes"
+        ],
+        "data_source": "FigureQA",
+        "answer": "<answer>B</answer>",
+        "images": [
+            "./QA/Chart/FigureQA/images/58433.png"
+        ],
+        "problem_reserved_text": "Is Midnight Blue the median with the highest value?",
+        "task_type": "chart_figure_qa"
+    },
+    {
+        "problem_id": 69,
+        "problem": "<image> What type of MRI image was used to show the pyramidal pathway tracts?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. T1-weighted",
+            "B. T2-weighted",
+            "C. Diffusion-weighted",
+            "D. FLAIR"
+        ],
+        "data_source": "PMC-VQA",
+        "answer": "<answer>B</answer>",
+        "images": [
+            "./QA/Knowledge/PMC-VQA/images/PMC5243825_F4_115824.jpg"
+        ],
+        "problem_reserved_text": "What type of MRI image was used to show the pyramidal pathway tracts?",
+        "task_type": "general_vqa_science_stem"
+    },
+    {
+        "problem_id": 36,
+        "problem": "<image> Is the function shown in the table linear or nonlinear?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. linear",
+            "B. nonlinear"
+        ],
+        "data_source": "TabMWP",
+        "answer": "<answer>B</answer>",
+        "images": [
+            "./QA/Chart/TabMWP/images/11970.png"
+        ],
+        "problem_reserved_text": "Is the function shown in the table linear or nonlinear?",
+        "task_type": "math_reasoning"
+    },
+    {
+        "problem_id": 64,
+        "problem": "<image> How tall is the tall trees with the stream? Please measure it in meters.",
+        "data_type": "image",
+        "problem_type": "regression",
+        "options": [],
+        "data_source": "OpenSpaces",
+        "answer": "<answer>2.55</answer>",
+        "images": [
+            "./QA/Spatial/OpenSpaces/image_7360.png"
+        ],
+        "problem_reserved_text": "How tall is the tall trees with the stream? Please measure it in meters.",
+        "task_type": "spatial_reasoning"
+    },
+    {
+        "problem_id": 184,
+        "problem": "<image> Find out how tall the vase of purple flowers on table is. Please measure it in meters.",
+        "data_type": "image",
+        "problem_type": "regression",
+        "options": [],
+        "data_source": "Spacellava",
+        "answer": "<answer>2.57</answer>",
+        "images": [
+            "./QA/Spatial/Spacellava/image_20272.png"
+        ],
+        "problem_reserved_text": "Find out how tall the vase of purple flowers on table is. Please measure it in meters.",
+        "task_type": "spatial_reasoning"
+    },
+    {
+        "problem_id": 37,
+        "problem": "<image> Please write out the expression of the formula in the image using LaTeX format.",
+        "data_type": "image",
+        "problem_type": "OCR",
+        "options": [],
+        "data_source": "chrome_writting",
+        "answer": "<answer>\\lim _ { n \\rightarrow \\infty } \\frac { n ! } { \\sqrt { 2 \\pi n } ( \\frac { n } { e } ) } = 1</answer>",
+        "images": [
+            "./QA/OCR/ChromeWriting/identity_5947.png"
+        ],
+        "problem_reserved_text": "Please write out the expression of the formula in the image using LaTeX format.",
+        "task_type": "ocr"
+    },
+    {
+        "problem_id": 13,
+        "problem": "<image> Please provide the bounding box coordinate of the region this sentence describes: fourth one from us.",
+        "data_type": "image",
+        "problem_type": "spatial grounding",
+        "options": [],
+        "data_source": "RefCOCOp",
+        "answer": "<answer>{\"boxes\": [0, 292, 664, 451]}</answer>",
+        "images": [
+            "./Spatial-Grounding/train2014/COCO_train2014_000000337425.jpg"
+        ],
+        "problem_reserved_text": "Please provide the bounding box coordinate of the region this sentence describes: fourth one from us.",
+        "task_type": "spatial_grounding"
+    },
+    {
+        "problem_id": 361,
+        "problem": "<image> How many years did Structural Policies receive a rating of 3 or higher?",
+        "data_type": "image",
+        "problem_type": "numerical",
+        "options": [],
+        "data_source": "PlotQA",
+        "answer": "<answer>5</answer>",
+        "images": [
+            "./QA/Chart/PlotQA/images/66049.png"
+        ],
+        "problem_reserved_text": "How many years did Structural Policies receive a rating of 3 or higher?",
+        "task_type": "chart_figure_qa"
+    },
+    {
+        "problem_id": 9,
+        "problem": "<image> Is the sky blue weather sunny closer to camera compared to the an urban area with a busy street scene?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "data_source": "OpenSpaces",
+        "answer": "<answer>B</answer>",
+        "images": [
+            "./QA/Spatial/OpenSpaces/image_6270.png"
+        ],
+        "problem_reserved_text": "Is the sky blue weather sunny closer to camera compared to the an urban area with a busy street scene?",
+        "task_type": "spatial_reasoning"
+    },
+    {
+        "problem_id": 16,
+        "problem": "<image> Are all the vertebrae in the spine intact?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. No",
+            "B. Yes"
+        ],
+        "data_source": "PMC-VQA",
+        "answer": "<answer>B</answer>",
+        "images": [
+            "./QA/Knowledge/PMC-VQA/images/PMC6298256_f1_412562.jpg"
+        ],
+        "problem_reserved_text": "Are all the vertebrae in the spine intact?",
+        "task_type": "general_vqa_science_stem"
+    },
+    {
+        "problem_id": 109,
+        "problem": "<image> Why is there so much color in the sky?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. lightening bugs",
+            "B. fireworks",
+            "C. streamers",
+            "D. kite strings"
+        ],
+        "data_source": "A-OKVQA",
+        "answer": "<answer>D</answer>",
+        "images": [
+            "./QA/General/A-OKVQA/images/568076.jpg"
+        ],
+        "problem_reserved_text": "Why is there so much color in the sky?",
+        "task_type": "general_vqa_science_stem"
+    },
+    {
+        "problem_id": 18,
+        "problem": "<image> Please provide the bounding box coordinate of the region this sentence describes: a man in a black coata cutting up his food.",
+        "data_type": "image",
+        "problem_type": "spatial grounding",
+        "options": [],
+        "data_source": "RefCOCOg",
+        "answer": "<answer>{\"boxes\": [81, 4, 1000, 924]}</answer>",
+        "images": [
+            "./Spatial-Grounding/train2014/COCO_train2014_000000125259.jpg"
+        ],
+        "problem_reserved_text": "Please provide the bounding box coordinate of the region this sentence describes: a man in a black coata cutting up his food.",
+        "task_type": "spatial_grounding"
+    },
+    {
+        "problem_id": 204,
+        "problem": "<image> Describe this image in detail.",
+        "data_type": "image",
+        "problem_type": "OCR",
+        "options": [],
+        "data_source": "textocr(gpt4v)",
+        "answer": "<answer>In the midst of a nocturnal baseball game, a pitcher is caught in the tension of a throw while a player leads off second base, poised to sprint, and an adversary crouches in anticipation. Behind the intense play, advertisement boards display various messages: \"BAM\" stands out in white letters against a blue backdrop on the left, while \"HOT-N-READY\" is emblazoned in white and yellow on a red background, with \"LITTLE CAESARS PIZZA\" marked below in more modest white font.</answer>",
+        "images": [
+            "./QA/OCR/TextOCR/e16f270d3cac31fe.png"
+        ],
+        "problem_reserved_text": "Describe this image in detail.",
+        "task_type": "ocr"
+    },
+    {
+        "problem_id": 380,
+        "problem": "<image> Please transcribe the image's text accurately.",
+        "data_type": "image",
+        "problem_type": "OCR",
+        "options": [],
+        "data_source": "rendered_text(cauldron)",
+        "answer": "<answer>Menus may use the\nculinary terms\n\"concass\u00e9\" to describe\ncoarsely chopped\nvegetables</answer>",
+        "images": [
+            "./QA/OCR/Rendered_Text/cauldron/rendered_text/images/rendered_text_00009474.png"
+        ],
+        "problem_reserved_text": "Please transcribe the image's text accurately.",
+        "task_type": "ocr"
+    },
+    {
+        "problem_id": 63,
+        "problem": "<image> Find the measure of \\angle 1 in the figure.",
+        "data_type": "image",
+        "problem_type": "math",
+        "options": [],
+        "data_source": "ARES",
+        "answer": "<answer>80</answer>",
+        "images": [
+            "./QA/Math/ARES/images/11479.png"
+        ],
+        "problem_reserved_text": "Find the measure of \\angle 1 in the figure.",
+        "task_type": "math_reasoning"
+    },
+    {
+        "problem_id": 43,
+        "problem": "<image> Estimate the mean minimum value of the functions shown in the plot. Give your answer to 1 decimal place.",
+        "data_type": "image",
+        "problem_type": "math",
+        "options": [],
+        "data_source": "ARES",
+        "answer": "<answer>-5.1</answer>",
+        "images": [
+            "./QA/Math/ARES/images/18373.png"
+        ],
+        "problem_reserved_text": "Estimate the mean minimum value of the functions shown in the plot. Give your answer to 1 decimal place.",
+        "task_type": "math_reasoning"
+    },
+    {
+        "problem_id": 387,
+        "problem": "<image> Describe this image in detail.",
+        "data_type": "image",
+        "problem_type": "OCR",
+        "options": [],
+        "data_source": "textocr(gpt4v)",
+        "answer": "<answer>In this warm interior shot, we observe a friendly employee beaming at the camera from behind the checkout counter of a charming, well-lit grocery store brimming with goods. Signs promoting organic and environmental consciousness adorn the store: \"Haziet Lake Organically Grown Vegetables\" proudly declares the origin of the produce to the left, \"COLUMBIA GO ORGANIC\" encourages organic shopping above the checkout, while a \"RECYCLE Landfill\" sign underscores the store's commitment to recycling below the counter. A \"Not Tag\" sign is visible on the refrigerator, and the shelves feature various unreadable small text labels, indicating the array of selections available.</answer>",
+        "images": [
+            "./QA/OCR/TextOCR/d9058eb3fccf5b23.png"
+        ],
+        "problem_reserved_text": "Describe this image in detail.",
+        "task_type": "ocr"
+    },
+    {
+        "problem_id": 122,
+        "problem": "<image> Please provide the bounding box coordinate of the region this sentence describes: gray suit.",
+        "data_type": "image",
+        "problem_type": "spatial grounding",
+        "options": [],
+        "data_source": "RefCOCOp",
+        "answer": "<answer>{\"boxes\": [413, 52, 937, 989]}</answer>",
+        "images": [
+            "./Spatial-Grounding/train2014/COCO_train2014_000000399970.jpg"
+        ],
+        "problem_reserved_text": "Please provide the bounding box coordinate of the region this sentence describes: gray suit.",
+        "task_type": "spatial_grounding"
+    },
+    {
+        "problem_id": 54,
+        "problem": "<image> The output of the following program is ___.",
+        "data_type": "image",
+        "problem_type": "math",
+        "options": [],
+        "data_source": "MMK12",
+        "answer": "<answer>$$132$$</answer>",
+        "images": [
+            "./QA/Math/MMK12/train-00002-of-00003/3721.png"
+        ],
+        "problem_reserved_text": "The output of the following program is ___.",
+        "task_type": "math_reasoning"
+    },
+    {
+        "problem_id": 55,
+        "problem": "<image> Please provide the bounding box coordinate of the region this sentence describes: bus next to pedestrian crossing sign.",
+        "data_type": "image",
+        "problem_type": "spatial grounding",
+        "options": [],
+        "data_source": "RefCOCOp",
+        "answer": "<answer>{\"boxes\": [479, 434, 723, 818]}</answer>",
+        "images": [
+            "./Spatial-Grounding/train2014/COCO_train2014_000000495641.jpg"
+        ],
+        "problem_reserved_text": "Please provide the bounding box coordinate of the region this sentence describes: bus next to pedestrian crossing sign.",
+        "task_type": "spatial_grounding"
+    },
+    {
+        "problem_id": 26,
+        "problem": "<image> Please provide the bounding box coordinate of the region this sentence describes: bigest mouth.",
+        "data_type": "image",
+        "problem_type": "spatial grounding",
+        "options": [],
+        "data_source": "RefCOCOp",
+        "answer": "<answer>{\"boxes\": [640, 379, 959, 736]}</answer>",
+        "images": [
+            "./Spatial-Grounding/train2014/COCO_train2014_000000288127.jpg"
+        ],
+        "problem_reserved_text": "Please provide the bounding box coordinate of the region this sentence describes: bigest mouth.",
+        "task_type": "spatial_grounding"
+    },
+    {
+        "problem_id": 93,
+        "problem": "<image> Please provide the bounding box coordinate of the region this sentence describes: an elephant being held by a rope.",
+        "data_type": "image",
+        "problem_type": "spatial grounding",
+        "options": [],
+        "data_source": "RefCOCOg",
+        "answer": "<answer>{\"boxes\": [2, 4, 268, 629]}</answer>",
+        "images": [
+            "./Spatial-Grounding/train2014/COCO_train2014_000000020355.jpg"
+        ],
+        "problem_reserved_text": "Please provide the bounding box coordinate of the region this sentence describes: an elephant being held by a rope.",
+        "task_type": "spatial_grounding"
+    },
+    {
+        "problem_id": 32,
+        "problem": "<image> The provided figure contains both the question and its answer options. Please carefully examine the figure and choose the option that best answers the question.",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. Please review the first option as illustrated in the figure and select it if it best corresponds to your answer.",
+            "B. Please review the second option as illustrated in the figure and select it if it best corresponds to your answer.",
+            "C. Please review the third option as illustrated in the figure and select it if it best corresponds to your answer.",
+            "D. Please review the fourth option as illustrated in the figure and select it if it best corresponds to your answer."
+        ],
+        "data_source": "EXAMS-V-train/History",
+        "answer": "<answer>C</answer>",
+        "images": [
+            "./QA/Knowledge/EXAMS-V/d9727bda-2587-4b71-a290-bed56fb2e8ba.png"
+        ],
+        "problem_reserved_text": "The provided figure contains both the question and its answer options. Please carefully examine the figure and choose the option that best answers the question.",
+        "task_type": "general_vqa_science_stem"
+    },
+    {
+        "problem_id": 5,
+        "problem": "<image> Does the white bowl with tea and lemon have a smaller size compared to the pink and red flowers?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. Correct",
+            "B. Incorrect"
+        ],
+        "data_source": "Spacellava",
+        "answer": "<answer>B</answer>",
+        "images": [
+            "./QA/Spatial/Spacellava/image_12537.png"
+        ],
+        "problem_reserved_text": "Does the white bowl with tea and lemon have a smaller size compared to the pink and red flowers?",
+        "task_type": "spatial_reasoning"
+    },
+    {
+        "problem_id": 20,
+        "problem": "<image> Are there any signs of blunting in the costophrenic angle(s)?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. No",
+            "B. Yes"
+        ],
+        "data_source": "VQA-RAD",
+        "answer": "<answer>A</answer>",
+        "images": [
+            "./QA/Knowledge/VQA-RAD/images/synpic676.jpg"
+        ],
+        "problem_reserved_text": "Are there any signs of blunting in the costophrenic angle(s)?",
+        "task_type": "general_vqa_science_stem"
+    },
+    {
+        "problem_id": 209,
+        "problem": "<image> What is the sum of the values of ward in habit, ballet, and flavor?",
+        "data_type": "image",
+        "problem_type": "numerical",
+        "options": [],
+        "data_source": "DVQA",
+        "answer": "<answer>14</answer>",
+        "images": [
+            "./QA/Chart/DVQA/images/bar_train_00070965.png"
+        ],
+        "problem_reserved_text": "What is the sum of the values of ward in habit, ballet, and flavor?",
+        "task_type": "chart_figure_qa"
+    },
+    {
+        "problem_id": 85,
+        "problem": "<image> What is the purpose of the 'Deep supervision' dashed lines in the diagram?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. To provide regularization by adding auxiliary loss functions.",
+            "B. To supervise the learning of the deeper layers directly.",
+            "C. To create shortcuts for the flow of information in the network.",
+            "D. To denote the final output layer of the neural network.",
+            "-"
+        ],
+        "data_source": "ArxivQA",
+        "answer": "<answer>B</answer>",
+        "images": [
+            "./QA/Knowledge/ArxivQA/images/2302.02744_1.jpg"
+        ],
+        "problem_reserved_text": "What is the purpose of the 'Deep supervision' dashed lines in the diagram?",
+        "task_type": "general_vqa_science_stem"
+    },
+    {
+        "problem_id": 15,
+        "problem": "<image> What type of organisms are shown in the micrographs?",
+        "data_type": "image",
+        "problem_type": "multiple choice",
+        "options": [
+            "A. Bacteria",
+            "B. Zooplankton",
+            "C. Phytoplankton",
+            "D. Fungi"
+        ],
+        "data_source": "PMC-VQA",
+        "answer": "<answer>C</answer>",
+        "images": [
+            "./QA/Knowledge/PMC-VQA/images/PMC4864780_Fig5_29969.jpg"
+        ],
+        "problem_reserved_text": "What type of organisms are shown in the micrographs?",
+        "task_type": "general_vqa_science_stem"
+    },
+    {
+        "problem_id": 302,
+        "problem": "<image> Output the text in this image.",
+        "data_type": "image",
+        "problem_type": "OCR",
+        "options": [],
+        "data_source": "iam(cauldron)",
+        "answer": "<answer>\" Now what about that drink? \"</answer>",
+        "images": [
+            "./QA/OCR/IAM/cauldron/iam/images/iam_00004854.png"
+        ],
+        "problem_reserved_text": "Output the text in this image.",
+        "task_type": "ocr"
+    },
+    {
+        "problem_id": 33,
+        "problem": "<image> Extract and type out the image's text.",
+        "data_type": "image",
+        "problem_type": "OCR",
+        "options": [],
+        "data_source": "rendered_text(cauldron)",
+        "answer": "<answer>I've been thinking a lot\nlately about my long-term\ndream. What is it? I\nreally want to live on a\nhouseboat and travel the\nworld.</answer>",
+        "images": [
+            "./QA/OCR/Rendered_Text/cauldron/rendered_text/images/rendered_text_00002377.png"
+        ],
+        "problem_reserved_text": "Extract and type out the image's text.",
+        "task_type": "ocr"
+    }
+]
