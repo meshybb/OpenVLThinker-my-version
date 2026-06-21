@@ -1,127 +1,63 @@
-# OpenVLThinkerV2: A Generalist Multimodal Reasoning Model for Multi-domain Visual Tasks
+## Current Progress
 
+This project is a small-scale controlled experiment based on OpenVLThinker / OpenVLThinkerV2.
+The original paper uses a large vision-language model and a filtered training subset that is not fully available, so the goal here is not a full reproduction of the paper. Instead, the goal is to compare GRPO and G²RPO under the same small-scale experimental setup.
 
-<p align="center">
-    <a href="https://gordonhu608.github.io">Wenbo Hu</a>,
-    <a href="https://openreview.net/profile?id=~Xin_Chen89">Xin Chen</a>,
-    <a href="https://openreview.net/profile?id=~Yan_Gao-Tian1">Yan Gao-Tian</a>,
-    <a href="https://yihe-deng.notion.site/Yihe-Deng-167ab2d2c1fb80b3a76dfb120f716c84">Yihe Deng</a>,
-    <a href="https://violetpeng.github.io/">Nanyun Peng</a>,
-    <a href="https://web.cs.ucla.edu/~kwchang/">Kai-Wei Chang</a>
-</p>
+So far, I prepared a small mathematical reasoning dataset based on `hiyouga/math12k`.
+Two local JSON files were created:
 
+* `data_small/math12k_train_64.json`
+* `data_small/math12k_val_50.json`
 
-<p align="center">
-  <a href="https://arxiv.org/pdf/2604.08539">📑 Paper</a>  |
-  <a href="https://arxiv.org/abs/2604.08539">📖 arXiv</a>  |
-  <a href="https://gordonhu608.github.io/openvlthinkerv2.github.io">🌐 Homepage</a> |
-  <a href="https://huggingface.co/">🤗 Model (Coming)</a>
-  <a href="https://huggingface.co/papers/2604.08539">🤗 HF Daily Paper</a>
-</p>
+The dataset was adapted to the EasyR1 reward pipeline by adding the required fields:
 
-## 🏠 About
-<div style="text-align: center;">
-    <img src="assets/method.png" alt="Dialogue_Teaser" width=100% >
-</div>
-    We present <b>OpenVLThinkerV2</b>, a robust, general-purpose multimodal model. 
-    understanding tasks. Our model is trained with <b>G<sup>2</sup>RPO</b>, a novel RL training objective that replaces linear scaling with non-
-    linear distributional matching. 
-    By enforcing a Gaussian topology, <b>G<sup>2</sup>RPO</b> provides 1) intrinsic robustness to outliers, 2) symmetric updates for positive and negative rewards, and 3) uniform variance across diverse tasks.
+* `problem_reserved_text`
+* `ground_truth`
 
+I first tested the vision-language model:
 
-<div style="text-align: center;">
-    <img src="assets/shaping.png" alt="Dialogue_Teaser" width=100% >
-</div>
-We further introduce task-level response length and entropy shaping mechanisms to balance perception and multi-step reasoning. These dynamic bounds encourages early response length convergence and effectively preventing both entropy collapse and explosion.
+* `Qwen/Qwen2.5-VL-3B-Instruct`
 
-## 🏆 Performance
+This model was chosen because it is related to the Qwen-VL family used in the paper, but smaller than the original model.
+Several Slurm smoke tests were performed on L4 GPUs. During this process, I fixed or worked around multiple practical issues:
 
-Our model obtains significant performance gains after training on the baseline Qwen3-VL-Instruct-8B across diverse visual tasks. For instance, OpenVLThinkerV2 achieves $71.6\%$ on MMMU and $79.5\%$ on MathVista, surpassing GPT-4o by a significant margin. Furthermore, across six distinct benchmarks evaluating document understanding and spatial reasoning, OpenVLThinkerV2 significantly outperforms proprietary frontier models, including GPT-5 and Gemini 2.5 Pro.
+* replaced `flash_attention_2` with `sdpa` because `flash_attn` was not installed;
+* moved from 1 GPU to 2 GPUs because 1×L4 was not enough for the model, FSDP, and vLLM rollout together;
+* limited vLLM memory usage using smaller rollout settings;
+* set `rollout_batch_size=2` to match the 2-GPU setup;
+* disabled `padding_free` to avoid dependency on `flash_attn`;
+* disabled actor optimizer offload to avoid CPU/GPU tensor device mismatch during optimizer updates.
 
+The best run so far is:
 
-<div align="center">
-  <img src="assets/performance.png" alt="Descriptive alt text" width="90%">
-</div>
+* `smoke_g2rpo_l4_fix8_2gpu.sh`
 
+This run successfully reached 2/2 G²RPO training steps and produced final validation metrics. However, the Slurm job ended with an OOM kill near the end of execution, most likely due to high CPU/Ray memory usage. Therefore, this run is useful as evidence that the pipeline can run, but it is not stable enough for the final comparison experiment.
 
+## Current Conclusion
 
-## 📢 News
+`Qwen/Qwen2.5-VL-3B-Instruct` can run a very small G²RPO smoke test on 2×L4 GPUs, but the setup is too memory-heavy and unstable for repeated controlled experiments on the available hardware.
 
-- [Coming!] 📝 We will release the checkpoint of OpenVLThinkerV2 after the model trained with Cold-Start SFT. Our current results can be achieved by directly RL from Qwen3-VL-8B. Stay tuned for our stronger version! 
-- [2026-04-10] 🔥 We release the example training and validation data in the [data folder](example_data).
-- [2026-04-10] 🔥 We release the training and evaluation code.
-- [2026-04-10] 🔥 We release the [paper](https://arxiv.org/pdf/2604.08539) of OpenVLThinkerV2.
+For the final GRPO vs. G²RPO comparison, the next step is to switch to a smaller Qwen instruction model, such as:
 
+* `Qwen/Qwen2.5-1.5B-Instruct`
 
+Although this model is not vision-language, the current dataset is text-based mathematical reasoning, so it is more suitable for a stable controlled comparison.
 
-## 📐 Set up
+## Next Tasks
 
-```bash
-git clone https://github.com/uclanlp/OpenVLThinker.git
-cd OpenVLThinker
-conda create -n easyr1 python=3.11 
-conda activate easyr1
-cd EasyR1
-pip install -e .
-```
-For more details for the RL environment installation, please refer to  [EasyR1](https://github.com/hiyouga/EasyR1).
+1. Keep the current Qwen2.5-VL-3B smoke test as a hardware feasibility experiment.
+2. Create a new smoke-test script for `Qwen/Qwen2.5-1.5B-Instruct`.
+3. Run a small G²RPO smoke test with the smaller model.
+4. Run a matching GRPO smoke test with the same model, dataset, batch size, and number of steps.
+5. If both smoke tests pass, run a slightly longer comparison, for example 10–20 training steps.
+6. Collect and compare the following metrics:
 
-
-## 🚀 Training
-
-```bash
-bash ./EasyR1/local_scripts/run_g2rpo_rl_slurm.sh
-```
-
-We provide example training and validation sample data [here](example_data). The original images in training data can be found in this [work](https://huggingface.co/datasets/OneThink/OneThinker-train-data).
-
-Furthermore, our training process supports multi-task validation with separate scores for each task. To add more validation dataset for various tasks, please add them [here](EasyR1/local_scripts/run_g2rpo_rl_slurm.sh#L15) and update your task keys in this [file](EasyR1/verl/trainer/data_loader.py#L153).
-
-For RL training code on AWS Trainium instances, please refer to our specific example [repo](https://github.com/YGaotian/EasyR1-Trainium).
-
-
-
-## 🔮 Inference & Evaluation
-Since OpenVLThinkerV2 shares the same architecture as Qwen3-VL-8B, it naturally supports easy and efficient inference.
-
-We adopt [VLMEvalKit](https://github.com/open-compass/vlmevalkit) for most of our evaluation. For grounding task, we follow evaluation scripts in [OneThinker](https://github.com/tulerfeng/OneThinker/blob/main/Evaluation/Eval/eval_bench_all.sh). Please follow them for specific evaluation setups. 
-
-
-## VeRL G<sup>2</sup>RPO Implementation
-
-Please refer to the [core_algos.py](EasyR1/verl/trainer/core_algos.py#L220)
-
-```python
-@register_adv_estimator(AdvantageEstimator.GS_GRPO) 
-def compute_pertask_gaussian_outcome_advantage_grpo
-```
-
-We also support our Gaussian Advantage Normalization method in GDPO, please see Gaussian (GS) GDPO: 
-```python
-@register_adv_estimator(AdvantageEstimator.GS_GDPO) 
-def compute_pertask_gaussian_outcome_advantage_gdpo
-```
-
-These can be changed at the config [file](EasyR1/examples/config_g2rpo.yaml#L26).
-
-## 🔗 Citation
-
-If you find our work helpful for your research, please consider citing our work.   
-
-```
-@article{hu2026openvlthinkerv2generalistmultimodalreasoning,
-      title={OpenVLThinkerV2: A Generalist Multimodal Reasoning Model for Multi-domain Visual Tasks}, 
-      author={Wenbo Hu and Xin Chen and Yan Gao-Tian and Yihe Deng and Nanyun Peng and Kai-Wei Chang},
-      year={2026},
-      journal={arXiv preprint arXiv:2604.08539},
-      url={https://arxiv.org/abs/2604.08539}, 
-}
-```
-
-## 📄 License
-OpenVLThinkerV2 is licensed under the Apache 2.0.
-
-
-## 👏 Acknowledgements
-
-We sincerely appreciate the contributions of the open-source community. The related projects are as follows: [EasyR1](https://github.com/hiyouga/EasyR1), [verl](https://github.com/volcengine/verl), [VLMEvalKit](https://github.com/open-compass/VLMEvalKit),  [OneThinker](https://github.com/tulerfeng/OneThinker).
+   * validation reward score;
+   * math accuracy reward;
+   * math format reward;
+   * training reward;
+   * time per step;
+   * GPU memory usage;
+   * CPU memory usage.
+7. Write the final report as a controlled comparison rather than a full reproduction of the original paper.
