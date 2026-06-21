@@ -7,3 +7,8 @@ __pycache__/
 *.pyc
 
 !train/sft/data/dataset_info.json
+# Local Slurm/Ray experiment outputs
+EasyR1/math12k_rl_*.out
+EasyR1/math12k_rl_*.err
+EasyR1/ray_tmp/
+EasyR1/checkpoints/

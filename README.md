@@ -44,6 +44,9 @@ For the final GRPO vs. G²RPO comparison, the next step is to switch to a smalle
 
 Although this model is not vision-language, the current dataset is text-based mathematical reasoning, so it is more suitable for a stable controlled comparison.
 
+
+
+
 ## Next Tasks
 
 1. Keep the current Qwen2.5-VL-3B smoke test as a hardware feasibility experiment.
@@ -61,3 +64,55 @@ Although this model is not vision-language, the current dataset is text-based ma
    * GPU memory usage;
    * CPU memory usage.
 7. Write the final report as a controlled comparison rather than a full reproduction of the original paper.
+
+
+
+
+
+
+
+## Small-Scale GRPO vs. G²RPO Experiment
+
+After the initial Qwen2.5-VL-3B feasibility test, I switched to a smaller model for the controlled comparison experiment:
+
+* `Qwen/Qwen2.5-1.5B-Instruct`
+
+This model was selected because the original Qwen3-VL-Instruct-8B model and the exact training data from the paper are too large or unavailable for the current university server setup. Although this model is not vision-language, the selected Math12K subset is text-based, so it is suitable for a controlled GRPO vs. G²RPO comparison.
+
+I created and used the following Slurm script:
+
+* `EasyR1/run_math12k_rl_small.sh`
+
+The script supports both GRPO and G²RPO using the same model, dataset, batch settings, response length, and validation setup. The only main difference between the two runs is the advantage estimator:
+
+* GRPO: `algorithm.adv_estimator=grpo`
+* G²RPO: `algorithm.adv_estimator=gs_grpo`
+
+The experiment used:
+
+* model: `Qwen/Qwen2.5-1.5B-Instruct`
+* train data: `data_small/math12k_train_64.json`
+* validation data: `data_small/math12k_val_50.json`
+* GPUs: 2×L4
+* max response length: 256
+* rollout batch size: 2
+* rollout samples per prompt: 2
+
+Both algorithms first passed a 2-step smoke test. Then, I ran a 10-step controlled comparison.
+
+### 10-Step Results
+
+| Model                 | Algorithm | Steps | Validation reward | Math accuracy reward | Math format reward | Time per step | CPU memory | GPU memory |
+| --------------------- | --------: | ----: | ----------------: | -------------------: | -----------------: | ------------: | ---------: | ---------: |
+| Qwen2.5-1.5B-Instruct |     G²RPO |    10 |             0.696 |                 0.20 |               0.86 |      128.954s |   56.121GB |    4.976GB |
+| Qwen2.5-1.5B-Instruct |      GRPO |    10 |             0.756 |                 0.28 |               0.84 |      116.381s |    56.23GB |    4.976GB |
+
+In this small-scale setup, GRPO achieved a higher validation reward and higher math accuracy reward, while G²RPO achieved a slightly higher format reward. Since this experiment uses a very small dataset subset and only 10 training steps, the result should not be interpreted as a general conclusion that GRPO is better than G²RPO. It only describes the behavior observed under this specific constrained setup.
+
+## Updated Next Tasks
+
+1. Commit the current experiment script and README update.
+2. Optionally run a longer controlled comparison with 20 training steps for both G²RPO and GRPO.
+3. Keep the setup identical between the two methods.
+4. Compare validation reward, math accuracy reward, format reward, runtime, and memory usage.
+5. In the final seminar report, present this as a small-scale controlled comparison, not as a full reproduction of the original OpenVLThinkerV2 paper.
