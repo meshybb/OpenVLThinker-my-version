@@ -122,10 +122,6 @@ G2RPO 20-step run on A100 reached 20/20 training steps, saved a global_step_20 c
 math12k_gs_grpo_qwen25_15b_steps20_resp256_16879570
 
 
-
-
-
-```markdown
 ## Small-Scale GRPO vs. G²RPO Experiment
 
 After the initial Qwen2.5-VL-3B feasibility test, I switched to a smaller model for the controlled comparison experiment:
