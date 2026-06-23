@@ -227,3 +227,36 @@ The most important practical issue found during the experiments was disk space. 
    * CPU and GPU memory usage
 5. Present the final report as a small-scale controlled ablation, not as a full reproduction of the original OpenVLThinkerV2 paper.
 ```
+
+
+
+
+
+```markdown
+### Final 50-Step Ablation Results
+
+For the final controlled ablation, I used a larger Math12K subset:
+
+* 256 training examples
+* 100 validation examples
+* 50 training steps
+* validation every 10 steps
+
+The same setup was used for both algorithms. The only main difference was the advantage estimator:
+
+* GRPO: `algorithm.adv_estimator=grpo`
+* G²RPO: `algorithm.adv_estimator=gs_grpo`
+
+Both final runs completed successfully with `ExitCode 0:0`.
+
+| Model | Algorithm | Steps | Train | Validation | Validation reward | Math accuracy reward | Math format reward | Math structure reward | Time per step | CPU memory | GPU memory |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Qwen2.5-1.5B-Instruct | GRPO | 50 | 256 | 100 | 0.135 | 0.15 | 0.00 | 0.000 | 315.801s | 55.551GB | 4.976GB |
+| Qwen2.5-1.5B-Instruct | G²RPO | 50 | 256 | 100 | 0.162 | 0.16 | 0.03 | 0.015 | 312.260s | 57.119GB | 4.976GB |
+
+In the final 50-step ablation, G²RPO achieved a slightly higher validation reward than GRPO. It also achieved slightly higher math accuracy, format reward, and structure reward. However, the absolute scores remained low for both methods, especially the format and structure rewards.
+
+This suggests that, under the small-scale and resource-constrained setup used in this project, G²RPO provided a small but consistent improvement over GRPO, while both methods still struggled to produce outputs that reliably matched the expected answer format and structure.
+
+These results should not be interpreted as a full reproduction of the OpenVLThinkerV2 paper. The original paper uses a larger vision-language model, much larger filtered training data, and substantially more compute. This experiment is instead a controlled small-scale ablation designed to compare GRPO and G²RPO under identical local conditions.
+```
