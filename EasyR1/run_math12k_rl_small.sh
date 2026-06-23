@@ -20,6 +20,8 @@ export WANDB_MODE=disabled
 export TOKENIZERS_PARALLELISM=false
 export VLLM_WORKER_MULTIPROC_METHOD=spawn
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+export HYDRA_FULL_ERROR=1
+export RAY_DEDUP_LOGS=0
 export HF_HOME=$HOME/.cache/huggingface
 export PYTHONPATH="$PWD:${PYTHONPATH:-}"
 
