@@ -2,11 +2,11 @@
 
 ## Context and Constraints
 
-I conducted a small-scale controlled ablation based on OpenVLThinkerV2.
+This experiment is a small-scale controlled ablation inspired by OpenVLThinkerV2.
 
-A full reproduction was not feasible because the original checkpoint and exact filtered training subset were not available, and the original setup requires a much larger vision-language model and significantly more compute.
+A full reproduction of the paper was not feasible in the available setup. The released project does not include the final OpenVLThinkerV2 checkpoint, and the exact filtered subset of OneThinker-600k used for training is not released. In addition, the paper's original training setup uses a much larger vision-language model, substantially larger data, and significantly more compute than the public university Slurm resources available for this project.
 
-Therefore, I focused on a controlled local comparison between GRPO and G²RPO under identical conditions.
+Therefore, instead of attempting a full reproduction, I focused on the main reproducible component that could be tested locally: comparing the G²RPO advantage estimator against standard GRPO under the same controlled setup.
 
 ## Plan
 
@@ -64,6 +64,3 @@ The absolute scores are limited by the small dataset, short training run, and sm
 
 Under the same small-scale experimental setup, G²RPO slightly outperformed GRPO.
 
-
-```
-```
