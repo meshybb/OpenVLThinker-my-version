@@ -2,7 +2,7 @@
 
 ## Context and Constraints
 
-I conducted a small-scale controlled ablation based on OpenVLThinker / OpenVLThinkerV2.
+I conducted a small-scale controlled ablation based on OpenVLThinkerV2.
 
 A full reproduction was not feasible because the original checkpoint and exact filtered training subset were not available, and the original setup requires a much larger vision-language model and significantly more compute.
 
@@ -64,4 +64,6 @@ The absolute scores are limited by the small dataset, short training run, and sm
 
 Under the same small-scale experimental setup, G²RPO slightly outperformed GRPO.
 
-This result should be presented as a controlled ablation and engineering reproduction of the training pipeline, not as a full reproduction of the original OpenVLThinkerV2 paper.
+
+```
+```
