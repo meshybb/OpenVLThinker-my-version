@@ -53,6 +53,6 @@ In the final controlled ablation, G²RPO achieved a small but consistent improve
 
 This experiment should not be interpreted as a full reproduction of OpenVLThinkerV2. It is a small-scale controlled ablation showing that the training pipeline works locally and that G²RPO slightly outperformed GRPO under the same constrained setup.
 
-For the full experiment history, failed attempts, fixes, and intermediate runs, see `EXPERIMENT_PROCESS.md`.
+For the full experiment history, failed attempts, fixes, and intermediate runs, see [EXPERIMENT_PROCESS.md](EXPERIMENT_PROCESS.md).
 
-For a short summary intended for the seminar update, see `ABLATION_RESULTS.md`.
+For a short summary intended for the seminar update, see [ABLATION_RESULTS.md](ABLATION_RESULTS.md).
