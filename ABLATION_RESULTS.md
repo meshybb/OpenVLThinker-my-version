@@ -1,29 +1,30 @@
 # Ablation Update: GRPO vs. G²RPO
 
-## Context and Constraints
+## Context
 
-This experiment is a small-scale controlled ablation inspired by OpenVLThinkerV2.
+This is not a full reproduction of OpenVLThinkerV2.
 
-A full reproduction of the paper was not feasible in the available setup. The released project does not include the final OpenVLThinkerV2 checkpoint, and the exact filtered subset of OneThinker-600k used for training is not released. In addition, the paper's original training setup uses a much larger vision-language model, substantially larger data, and significantly more compute than the public university Slurm resources available for this project.
+Main limitations:
+- The final OpenVLThinkerV2 checkpoint is not publicly released.
+- The exact filtered OneThinker-600k training subset is not released.
+- The original setup requires much larger models, data, and compute than the available university Slurm resources.
 
-Therefore, instead of attempting a full reproduction, I focused on the main reproducible component that could be tested locally: comparing the G²RPO advantage estimator against standard GRPO under the same controlled setup.
+Therefore, I implemented a small controlled ablation that compares GRPO and G²RPO under the same local setup.
 
-## Plan
+## Method Difference
 
-The ablation compared two advantage estimators:
+The two runs used the same training pipeline.  
+The only changed parameter was the advantage estimator:
 
-* GRPO: `algorithm.adv_estimator=grpo`
-* G²RPO: `algorithm.adv_estimator=gs_grpo`
+- GRPO: `algorithm.adv_estimator=grpo`
+- G²RPO: `algorithm.adv_estimator=gs_grpo`
 
-Everything else was kept fixed:
+In standard GRPO, rewards are normalized within the sampled responses of the same prompt using the group mean and standard deviation.
 
-* same model
-* same dataset
-* same training steps
-* same validation set
-* same rollout settings
-* same response length
-* same Slurm/GPU setup
+In G²RPO, the rewards are first separated by task type and then mapped using a rank-based 1D optimal-transport normalization to Gaussian-like scores.
+
+Since this experiment uses only Math12K text math problems, all validation examples belong to the same task type. Therefore, the practical difference in this ablation is mainly the reward-to-advantage normalization method, not multi-task balancing.
+
 
 ## Experimental Setup
 
@@ -49,18 +50,8 @@ Both final runs completed successfully with `ExitCode 0:0`.
 | GRPO      |    50 |   256 | 100 |             0.135 |          0.15 |   0.00 |     0.000 |
 | G²RPO     |    50 |   256 | 100 |             0.162 |          0.16 |   0.03 |     0.015 |
 
-## Result Summary
 
-G²RPO achieved a small but consistent improvement over GRPO:
-
-* higher validation reward
-* slightly higher math accuracy
-* higher format reward
-* higher structure reward
-
-The absolute scores are limited by the small dataset, short training run, and smaller model, but the comparison itself is controlled and fair because both methods used exactly the same setup.
-
-## Conclusion
-
-Under the same small-scale experimental setup, G²RPO slightly outperformed GRPO.
-
+## Result Meaning
+G²RPO gave a small positive improvement over GRPO in this controlled run.
+The gain is not large enough to claim a strong improvement in mathematical ability. A safer interpretation is that G²RPO slightly improved the training signal and produced a small improvement in answer quality and organization.
+Because the experiment used a small model, 50 training steps, 100 validation examples, and one seed, the result should be treated as a limited positive trend rather than strong statistical evidence.
