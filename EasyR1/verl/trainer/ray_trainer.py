@@ -386,6 +386,44 @@ class RayPPOTrainer:
         else:
             print(f"No dataloader state found at {dataloader_path}, will start from scratch.")
 
+
+    def _save_val_samples_jsonl(
+        self,
+        inputs,
+        outputs,
+        labels,
+        scores,
+        format_scores,
+        correctness_scores,
+        structure_scores,
+        length_scores,
+    ) -> None:
+        out_dir = self.config.trainer.save_checkpoint_path
+        os.makedirs(out_dir, exist_ok=True)
+
+        out_path = os.path.join(out_dir, f"validation_samples_step_{self.global_step}.jsonl")
+
+        with open(out_path, "w", encoding="utf-8") as f:
+            for i, (inp, out, lab, score, fmt, corr, struct, length) in enumerate(
+                zip(inputs, outputs, labels, scores, format_scores, correctness_scores, structure_scores, length_scores)
+            ):
+                row = {
+                    "step": self.global_step,
+                    "sample_index": i,
+                    "prompt": inp,
+                    "output": out,
+                    "ground_truth": lab,
+                    "score": score,
+                    "format_score": fmt,
+                    "correctness_score": corr,
+                    "structure_score": struct,
+                    "length_score": length,
+                }
+                f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+        print(f"Saved per-example validation outputs to {out_path}")
+
+        
     def _maybe_log_val_generations(
         self, inputs: list[str], outputs: list[str], labels: list[str], scores: list[float]
     ) -> None:
@@ -429,6 +467,8 @@ class RayPPOTrainer:
 
         # Lists to collect samples for the table
         sample_inputs, sample_outputs, sample_labels, sample_scores = [], [], [], []
+        sample_format_scores, sample_correctness_scores = [], []
+        sample_structure_scores, sample_length_scores = [], []
         # reward_metrics_lst = defaultdict(list)
         # length_metrics_lst = defaultdict(list)
         print("Start validation...")
@@ -474,10 +514,18 @@ class RayPPOTrainer:
                 output_ids = test_batch.batch["responses"]
                 output_texts = [self.tokenizer.decode(ids, skip_special_tokens=True) for ids in output_ids]
                 scores = reward_tensor.sum(-1).cpu().tolist()
+                format_scores = format_tensor.sum(-1).cpu().tolist()
+                correctness_scores = correctness_tensor.sum(-1).cpu().tolist()
+                structure_scores = structure_reward_tensor.sum(-1).cpu().tolist()
+                length_scores = length_reward_tensor.sum(-1).cpu().tolist()
                 sample_inputs.extend(input_texts)
                 sample_outputs.extend(output_texts)
                 sample_labels.extend(test_batch.non_tensor_batch["ground_truth"].tolist())
                 sample_scores.extend(scores)
+                sample_format_scores.extend(format_scores)
+                sample_correctness_scores.extend(correctness_scores)
+                sample_structure_scores.extend(structure_scores)
+                sample_length_scores.extend(length_scores)
 
                 reward_tensor_lst.append(reward_tensor)
                 for key, value in reward_metrics.items():
@@ -495,6 +543,18 @@ class RayPPOTrainer:
         self.val_reward_score = torch.cat(reward_tensor_lst, dim=0).sum(-1).mean().item()
         self._maybe_log_val_generations(sample_inputs, sample_outputs, sample_labels, sample_scores)
 
+        
+        self._save_val_samples_jsonl(
+            sample_inputs,
+            sample_outputs,
+            sample_labels,
+            sample_scores,
+            sample_format_scores,
+            sample_correctness_scores,
+            sample_structure_scores,
+            sample_length_scores,
+        )
+        
         print("Finish validation.")
         validation_end_time = time.time()
         time_for_eval = validation_end_time - validation_start_time

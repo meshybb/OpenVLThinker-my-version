@@ -89,7 +89,9 @@ python3 -m verl.trainer.main \
   trainer.max_steps=${STEPS} \
   trainer.val_freq=${VAL_FREQ} \
   trainer.val_before_train=false \
-  trainer.save_freq=-1 \
+  trainer.save_freq=${STEPS} \
+  trainer.save_limit=1 \
+  trainer.val_generations_to_log=100 \
   trainer.find_last_checkpoint=false \
   trainer.save_checkpoint_path=checkpoints/${EXP_NAME} \
   trainer.experiment_name=${EXP_NAME}

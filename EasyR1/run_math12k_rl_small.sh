@@ -38,8 +38,8 @@ EXP_NAME="math12k_${ADV_ESTIMATOR}_qwen25_15b_steps${STEPS}_resp${MAX_RESP}_${SL
 
 python3 -m verl.trainer.main \
   config=examples/config_g2rpo.yaml \
-  data.train_files=data_small/math12k_train_64.json \
-  data.test_files="['data_small/math12k_val_50.json']" \
+  data.train_files=data_small/math12k_train_256.json \
+  data.test_files="['data_small/math12k_val_100.json']" \
   data.prompt_key=problem \
   data.answer_key=answer \
   data.image_key=images \
@@ -89,7 +89,9 @@ python3 -m verl.trainer.main \
   trainer.max_steps=${STEPS} \
   trainer.val_freq=${VAL_FREQ} \
   trainer.val_before_train=false \
-  trainer.save_freq=-1 \
+  trainer.save_freq=${STEPS} \
+  trainer.save_limit=1 \
+  trainer.val_generations_to_log=100 \
   trainer.find_last_checkpoint=false \
   trainer.save_checkpoint_path=checkpoints/${EXP_NAME} \
   trainer.experiment_name=${EXP_NAME}

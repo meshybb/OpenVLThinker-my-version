@@ -1,0 +1,6 @@
+{
+  "best_global_step": 50,
+  "best_val_reward_score": 0.678,
+  "last_global_step": 50,
+  "last_actor_path": "/home/dsi/baruchm9/Seminary/new/OpenVLThinker/EasyR1/checkpoints/math12k_gs_grpo_qwen25_15b_steps50_resp256_16883201/global_step_50/actor"
+}
