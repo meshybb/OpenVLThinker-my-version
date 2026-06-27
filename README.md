@@ -51,11 +51,21 @@ Both final runs completed successfully with `ExitCode 0:0`.
 
 In the final controlled ablation, G²RPO achieved a small but consistent improvement over GRPO across the main validation metrics.
 
-This experiment should not be interpreted as a full reproduction of OpenVLThinkerV2. It is a small-scale controlled ablation showing that the training pipeline works locally and that G²RPO slightly outperformed GRPO under the same constrained setup.
+This experiment should not be interpreted as a full reproduction of OpenVLThinkerV2. 
+It is a small-scale controlled ablation showing that the training pipeline works locally and that G²RPO substantially improved format and structure reliability, while mathematical accuracy improved only slightly.
 
 For the full experiment history, failed attempts, fixes, and intermediate runs, see [EXPERIMENT_PROCESS.md](EXPERIMENT_PROCESS.md).
 
 For a short summary intended for the seminar update, see [ABLATION_RESULTS.md](ABLATION_RESULTS.md).
+The final saved outputs are available under:
+
+* [GRPO final outputs](EasyR1/final_results/grpo_16883195/)
+* [G²RPO final outputs](EasyR1/final_results/g2rpo_16883201/)
+
+The final actor checkpoint locations are documented in:
+
+* [Final checkpoint weights location](EasyR1/final_results/WEIGHTS_LOCATION.md)
+
 
 ## Connection to the G²RPO Formula
 
