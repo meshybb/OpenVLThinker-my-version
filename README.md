@@ -42,10 +42,10 @@ The dataset was adapted to the EasyR1 reward pipeline by adding the required fie
 
 Both final runs completed successfully with `ExitCode 0:0`.
 
-| Algorithm | Steps | Train | Val | Validation reward | Math accuracy | Format | Structure |
+| Algorithm | Steps | Train | Val | Validation Reward | Math Accuracy | Format | Structure |
 | --------- | ----: | ----: | --: | ----------------: | ------------: | -----: | --------: |
-| GRPO      |    50 |   256 | 100 |             0.135 |          0.15 |   0.00 |     0.000 |
-| G²RPO     |    50 |   256 | 100 |             0.162 |          0.16 |   0.03 |     0.015 |
+| GRPO      |    50 |   256 | 100 |             0.063 |          0.07 |   0.00 |     0.000 |
+| G²RPO     |    50 |   256 | 100 |             0.678 |          0.12 |   0.95 |     0.475 |
 
 ## Conclusion
 
@@ -56,3 +56,19 @@ This experiment should not be interpreted as a full reproduction of OpenVLThinke
 For the full experiment history, failed attempts, fixes, and intermediate runs, see [EXPERIMENT_PROCESS.md](EXPERIMENT_PROCESS.md).
 
 For a short summary intended for the seminar update, see [ABLATION_RESULTS.md](ABLATION_RESULTS.md).
+
+## Connection to the G²RPO Formula
+
+The qualitative examples suggest that G²RPO provides a clearer training signal for partial reward components such as **format** and **structure**.
+
+Compared with GRPO, G²RPO changes how rewards are converted into advantages. In this small experiment, that seems to help the model consistently learn the required output pattern:
+
+```text
+<thinking>...</thinking>
+<answer>...</answer>
+```
+
+Therefore, the main conclusion is:
+
+**G²RPO improves output organization and format reliability more clearly than mathematical correctness.**
+The math accuracy improves only slightly, but the format and structure rewards improve substantially.
