@@ -22,3 +22,10 @@ The per-example validation outputs are committed under:
 - `EasyR1/final_results/g2rpo_16883201/validation_samples_step_50.jsonl`
 
 These files include prompt, model output, ground truth, total score, correctness score, format score, structure score, and length score for each validation example.
+
+## FS-G²RPO Final Checkpoint
+
+The FS-G²RPO final checkpoint is stored on the university Slurm server at:
+
+```text
+/home/dsi/baruchm9/Seminary/new/OpenVLThinker/EasyR1/checkpoints/math12k_fs_gs_grpo_qwen25_15b_steps50_resp256_16883293
