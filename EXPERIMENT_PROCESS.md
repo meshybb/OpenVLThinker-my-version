@@ -170,3 +170,17 @@ Then the same G²RPO normalization is applied to this adjusted reward.
 This experiment uses the same setup as the final ablation
 
 The goal is not to improve the model significantly, but to test a small formula-level change that is motivated by the previous results.
+
+## 11. FS-G²RPO Final Run
+
+I ran the additional FS-G²RPO variant using the same final setup as the GRPO and G²RPO runs.
+
+Final FS-G²RPO results:
+
+| Algorithm | Steps | Train | Val | Validation Reward | Math Accuracy | Format | Structure |
+| --------- | ----: | ----: | --: | ----------------: | ------------: | -----: | --------: |
+| FS-G²RPO  |    50 |   256 | 100 |             0.246 |          0.10 |   0.26 |     0.130 |
+
+The result shows that FS-G²RPO improved format and structure compared with GRPO, but did not outperform the original G²RPO run.
+
+This means that the formula-level modification was reasonable to test, but in this small setup the original G²RPO normalization worked better than explicitly adding extra format and structure weights.
