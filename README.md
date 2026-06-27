@@ -14,12 +14,14 @@ The goal was to compare two reinforcement learning advantage estimators under th
 
 * GRPO
 * G²RPO, implemented in the codebase as `gs_grpo`
+* FS-G²RPO, a small formula-level variant implemented as `fs_gs_grpo`
 
 The only intended difference between the two final runs was:
 
 ```bash
 algorithm.adv_estimator=grpo
 algorithm.adv_estimator=gs_grpo
+algorithm.adv_estimator=fs_gs_grpo
 ```
 
 ## Setup
@@ -46,6 +48,24 @@ Both final runs completed successfully with `ExitCode 0:0`.
 | --------- | ----: | ----: | --: | ----------------: | ------------: | -----: | --------: |
 | GRPO      |    50 |   256 | 100 |             0.063 |          0.07 |   0.00 |     0.000 |
 | G²RPO     |    50 |   256 | 100 |             0.678 |          0.12 |   0.95 |     0.475 |
+| FS-G²RPO  |    50 |   256 | 100 |               TBD |           TBD |    TBD |       TBD |
+
+## FS-G²RPO Variant
+
+The first GRPO vs. G²RPO comparison showed that G²RPO mainly improved answer **format** and **structure**, while mathematical accuracy improved only slightly.
+
+Based on this observation, I added a small follow-up variant called **FS-G²RPO**.
+
+FS-G²RPO keeps the same G²RPO Gaussian rank-based normalization, but applies it to an adjusted reward:
+
+```text
+adjusted_reward = total_reward
+                  + 0.5 * format_reward
+                  + 0.5 * structure_reward
+```
+
+The goal is to test whether emphasizing the reward components that G²RPO already improved can further strengthen structured answer generation.
+
 
 ## Conclusion
 
