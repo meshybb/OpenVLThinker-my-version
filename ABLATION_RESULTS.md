@@ -1,5 +1,4 @@
-# Ablation Update: GRPO vs. G²RPO
-
+# Ablation Update: GRPO vs. G²RPO vs. FS-G²RPO
 ## Context
 
 This is not a full reproduction of OpenVLThinkerV2.
@@ -23,6 +22,14 @@ In standard GRPO, rewards are normalized within the sampled responses of the sam
 
 In G²RPO, the rewards are first separated by task type and then mapped using a rank-based 1D optimal-transport normalization to Gaussian-like scores.
 
+FS-G²RPO is a small follow-up variant motivated by the previous results. Since G²RPO mainly improved answer format and structure, FS-G²RPO applies the same G²RPO normalization to an adjusted reward:
+
+```text
+adjusted_reward = total_reward
+                  + 0.5 * format_reward
+                  + 0.5 * structure_reward
+```
+
 Since this experiment uses only Math12K text math problems, all validation examples belong to the same task type. Therefore, the practical difference in this ablation is mainly the reward-to-advantage normalization method, not multi-task balancing.
 
 
@@ -41,12 +48,14 @@ Final setup:
 
 Before the final run, I also tested a closer Qwen-VL model. It reached a functional G²RPO smoke test, but it was too memory-heavy for stable repeated experiments on the available hardware. Therefore, I used the smaller Qwen instruction model for the final controlled comparison.
 
-## Final GRPO vs. G²RPO Results
+## Final Results
 
 | Algorithm | Steps | Train | Val | Validation Reward | Math Accuracy | Format | Structure |
 | --------- | ----: | ----: | --: | ----------------: | ------------: | -----: | --------: |
 | GRPO      |    50 |   256 | 100 |             0.063 |          0.07 |   0.00 |     0.000 |
 | G²RPO     |    50 |   256 | 100 |             0.678 |          0.12 |   0.95 |     0.475 |
+| FS-G²RPO  |    50 |   256 | 100 |               TBD |           TBD |    TBD |       TBD |
+
 
 ### Result Meaning
 
