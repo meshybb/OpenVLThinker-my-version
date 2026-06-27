@@ -148,3 +148,25 @@ Therefore, the main conclusion is:
 
 **G²RPO improves output organization and format reliability more clearly than mathematical correctness.**
 The math accuracy improves only slightly, but the format and structure rewards improve substantially.
+
+## 10. Additional Variant: Format/Structure-Aware G²RPO
+
+The final GRPO vs. G²RPO ablation showed that the main improvement of G²RPO was in output format and structure, while mathematical accuracy improved only slightly.
+
+Based on this observation, I added a small follow-up variant called **FS-G²RPO**.
+
+The idea is to keep the same G²RPO Gaussian rank-based advantage normalization, but slightly increase the influence of the reward components that were most improved in the previous experiment: format and structure.
+
+Instead of applying G²RPO directly on the total reward, the new variant uses:
+
+```text
+adjusted_reward = total_reward
+                  + 0.5 * format_reward
+                  + 0.5 * structure_reward
+```
+
+Then the same G²RPO normalization is applied to this adjusted reward.
+
+This experiment uses the same setup as the final ablation
+
+The goal is not to improve the model significantly, but to test a small formula-level change that is motivated by the previous results.
