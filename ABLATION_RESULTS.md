@@ -8,6 +8,7 @@ Main limitations:
 - The final OpenVLThinkerV2 checkpoint is not publicly released.
 - The exact filtered OneThinker-600k training subset is not released.
 - The original setup requires much larger models, data, and compute than the available university Slurm resources.
+
 Therefore, I implemented a small controlled ablation using the same local setup for all runs.
 
 ## Experimental Setup
@@ -119,7 +120,10 @@ In this experiment, G²RPO did not dramatically improve mathematical correctness
 ```
 
 This matches the algorithmic difference: G²RPO changes how rewards are converted into advantages. As a result, partial reward components can have a clearer effect during training.
-FS-G²RPO sometimes preserved the structural behavior, but not consistently. Overall, it did not match the stronger format and structure reliability of the original G²RPO run.
+
+FS-G²RPO tried to emphasize the same signal by adding extra format and structure reward before applying the G²RPO mapping. However, because G²RPO is rank-based, changing the raw reward values does not necessarily change the final advantage strongly enough. 
+
+In this run, the added weights improved over GRPO but did not improve over the original G²RPO.
 
 
 ## Main Conclusion
