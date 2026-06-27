@@ -95,3 +95,27 @@ python3 -m verl.trainer.main \
   trainer.find_last_checkpoint=false \
   trainer.save_checkpoint_path=checkpoints/${EXP_NAME} \
   trainer.experiment_name=${EXP_NAME}
+
+
+  # ---------- Save compact final results ----------
+RESULT_TAG=${RESULT_TAG:-$ADV_ESTIMATOR}
+FINAL_DIR="final_results/${RESULT_TAG}_${SLURM_JOB_ID}"
+
+mkdir -p "$FINAL_DIR"
+
+echo "Saving compact results to: $FINAL_DIR"
+
+# Copy validation samples and important logs if they exist
+find . -path "*${EXP_NAME}*" -type f \( \
+  -name "validation_samples_step_${STEPS}.jsonl" -o \
+  -name "experiment_log.jsonl" -o \
+  -name "generations.log" -o \
+  -name "experiment_config.json" \
+\) -exec cp -v {} "$FINAL_DIR"/ \; || true
+
+# Extra fallback: search by job id, in case the trainer saved under a slightly different path
+find . -path "*${SLURM_JOB_ID}*" -type f -name "validation_samples_step_${STEPS}.jsonl" \
+  -exec cp -v {} "$FINAL_DIR"/ \; || true
+
+echo "Final result files:"
+ls -lh "$FINAL_DIR" || true

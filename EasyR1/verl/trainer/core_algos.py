@@ -86,6 +86,7 @@ class AdvantageEstimator(str, Enum):
     GDPO = "gdpo"
     GS_GDPO = "gs_gdpo"
     GS_GRPO = "gs_grpo"
+    FS_GS_GRPO = "fs_gs_grpo"
     REINFORCE_PLUS_PLUS = "reinforce_plus_plus"
     REMAX = "remax"
     RLOO = "rloo"
@@ -308,6 +309,129 @@ def compute_pertask_gaussian_outcome_advantage_grpo(
     return returns, returns
 
 
+
+@register_adv_estimator(AdvantageEstimator.FS_GS_GRPO)
+def compute_format_structure_gaussian_outcome_advantage_grpo(
+    token_level_rewards: torch.Tensor,
+    response_mask: torch.Tensor,
+    index: list | torch.Tensor,
+    problem_type: list | torch.Tensor,
+    data_type: list | torch.Tensor = None,
+    eps: float = 1e-6,
+    token_level_scores_format: torch.Tensor = None,
+    token_level_scores_correctness: torch.Tensor = None,
+    token_level_scores_structure: torch.Tensor = None,
+    token_level_scores_length: torch.Tensor = None,
+    **kwargs
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """
+    FS-G2RPO: Format/Structure-aware G2RPO.
+
+    This variant keeps the same Gaussian OT normalization as G2RPO,
+    but before the OT mapping it slightly up-weights the reward components
+    that were most improved in the previous ablation: format and structure.
+
+    Formula:
+        adjusted_score = total_reward
+                         + 0.5 * format_reward
+                         + 0.5 * structure_reward
+    """
+
+    bsz = response_mask.shape[0]
+    device = response_mask.device
+    dtype = response_mask.dtype if torch.is_floating_point(response_mask) else torch.float32
+
+    # 1. Base total reward, same as regular G2RPO
+    scores = token_level_rewards.sum(dim=-1).to(dtype)
+
+    # 2. Small extra weights for format and structure
+    format_weight = 0.5
+    structure_weight = 0.5
+
+    def _component_scores(component_tensor):
+        if component_tensor is None:
+            return torch.zeros_like(scores)
+
+        component_tensor = component_tensor.to(device=device)
+
+        if component_tensor.dim() > 1:
+            return component_tensor.sum(dim=-1).to(dtype)
+
+        return component_tensor.to(dtype)
+
+    format_scores = _component_scores(token_level_scores_format)
+    structure_scores = _component_scores(token_level_scores_structure)
+
+    # 3. The actual formula change
+    scores = scores + format_weight * format_scores + structure_weight * structure_scores
+
+    # 4. Everything below is the same logic as regular G2RPO
+
+    def _to_list(x):
+        if x is None:
+            return None
+        if torch.is_tensor(x):
+            return x.tolist()
+        try:
+            import numpy as _np
+            if isinstance(x, _np.ndarray):
+                return x.tolist()
+        except:
+            pass
+        return list(x) if isinstance(x, (list, tuple)) else [x] * bsz
+
+    index_list = _to_list(index)
+    pt_list = _to_list(problem_type)
+    dt_list = _to_list(data_type)
+
+    index_keys = [str(x) for x in index_list]
+
+    def _get_task_key(i):
+        pt = str(pt_list[i]) if pt_list else "default"
+        dt = str(dt_list[i]) if dt_list and dt_list[i] else ""
+
+        if pt == "segmentation" and dt.lower() in ("video", "image"):
+            return f"segmentation/{dt.lower()}"
+
+        return pt
+
+    task_to_indices = defaultdict(list)
+
+    for i in range(bsz):
+        task_to_indices[_get_task_key(i)].append(i)
+
+    final_advantages_scalar = torch.zeros(bsz, device=device, dtype=dtype)
+
+    for task_key, batch_indices in task_to_indices.items():
+        if not batch_indices:
+            continue
+
+        task_idxs = torch.tensor(batch_indices, device=device)
+        task_scores = scores[task_idxs]
+        task_group_ids = [index_keys[i] for i in batch_indices]
+
+        group_map = defaultdict(list)
+
+        for local_i, gid in enumerate(task_group_ids):
+            group_map[gid].append(local_i)
+
+        ot_scores = torch.zeros_like(task_scores)
+
+        for gid, local_indices in group_map.items():
+            if len(local_indices) > 0:
+                local_indices_t = torch.tensor(local_indices, device=device)
+                ot_scores[local_indices_t] = compute_1d_ot(task_scores[local_indices_t])
+
+        if len(ot_scores) > 1:
+            whitened_adv = compute_1d_ot(ot_scores)
+        else:
+            whitened_adv = torch.zeros_like(ot_scores)
+
+        final_advantages_scalar[task_idxs] = whitened_adv
+
+    returns = final_advantages_scalar.unsqueeze(-1) * response_mask
+
+    return returns, returns
 
 @register_adv_estimator(AdvantageEstimator.GDPO)
 def compute_gdpo_outcome_advantage(
