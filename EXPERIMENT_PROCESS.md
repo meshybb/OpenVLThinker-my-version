@@ -128,7 +128,7 @@ Final results:
 
 ## 8. Final Takeaway
 
-The final controlled ablation showed that G²RPO slightly outperformed GRPO under the same local setup.
+G²RPO substantially improved format and structure reliability, while mathematical accuracy improved only slightly.
 
 The experiment is not a full reproduction of the original paper. It is a small-scale engineering reproduction and ablation under limited university compute.
 
