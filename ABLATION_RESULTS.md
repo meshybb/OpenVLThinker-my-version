@@ -50,13 +50,13 @@ Before the final run, I also tested a closer Qwen-VL model. It reached a functio
 
 ### Result Meaning
 
-G²RPO outperformed GRPO mainly in **format** and **structure**, and only slightly in mathematical accuracy.
+G²RPO mainly improved format and structure reliability, while math accuracy improved only slightly.
 This means the main improvement is not a large jump in reasoning ability, but a much more stable ability to produce answers in the required format.
 
 ---
 
 ## Qualitative Examples
-
+The examples below were selected from the saved per-example validation outputs of the final rerun.
 ### Example 1: `ab = 1200`
 
 **Question:** Given `ab = 1200`, where `a` is an integer and `b` is odd, find the largest possible value of `b`.
@@ -101,16 +101,15 @@ This means the main improvement is not a large jump in reasoning ability, but a 
 
 ## Connection to the G²RPO Formula
 
-The qualitative examples suggest that G²RPO provides a clearer training signal for partial reward components such as **format** and **structure**.
+The qualitative examples suggest that G²RPO gives a stronger training signal for partial rewards such as **format** and **structure**.
 
-Compared with GRPO, G²RPO changes how rewards are converted into advantages. In this small experiment, that seems to help the model consistently learn the required output pattern:
+In this experiment, G²RPO did not dramatically improve mathematical correctness. Instead, it made the model much more consistent in producing the required output format:
 
 ```text
 <thinking>...</thinking>
 <answer>...</answer>
 ```
 
-Therefore, the main conclusion is:
+This matches the algorithmic difference: G²RPO changes how rewards are converted into advantages. As a result, partial reward components can have a clearer effect during training.
 
-**G²RPO improves output organization and format reliability more clearly than mathematical correctness.**
-The math accuracy improves only slightly, but the format and structure rewards improve substantially.
+**Main conclusion:** G²RPO mainly improved output organization and format reliability. The improvement in math accuracy was smaller.
