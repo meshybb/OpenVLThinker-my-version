@@ -10,13 +10,13 @@ My repository contains a small-scale controlled ablation built on top of the ori
 
 ## Goal
 
-The goal was to compare two reinforcement learning advantage estimators under the same setup:
+The goal was to compare three reinforcement learning advantage estimators under the same setup:
 
 * GRPO
 * G²RPO, implemented in the codebase as `gs_grpo`
 * FS-G²RPO, a small formula-level variant implemented as `fs_gs_grpo`
 
-The only intended difference between the two final runs was:
+The only intended difference between the three final runs was:
 
 ```bash
 algorithm.adv_estimator=grpo
@@ -42,7 +42,7 @@ The dataset was adapted to the EasyR1 reward pipeline by adding the required fie
 
 ## Final Results
 
-Both final runs completed successfully with `ExitCode 0:0`.
+All final runs completed successfully.
 
 | Algorithm | Steps | Train | Val | Validation Reward | Math Accuracy | Format | Structure |
 | --------- | ----: | ----: | --: | ----------------: | ------------: | -----: | --------: |
@@ -81,6 +81,7 @@ The final saved outputs are available under:
 
 * [GRPO final outputs](EasyR1/final_results/grpo_16883195/)
 * [G²RPO final outputs](EasyR1/final_results/g2rpo_16883201/)
+* [FS-G²RPO final outputs](EasyR1/final_results/fs_g2rpo_16883293/)
 
 The final actor checkpoint locations are documented in:
 
@@ -102,3 +103,5 @@ Therefore, the main conclusion is:
 
 **G²RPO improves output organization and format reliability more clearly than mathematical correctness.**
 The math accuracy improves only slightly, but the format and structure rewards improve substantially.
+
+The FS-G²RPO variant improved over GRPO in format and structure, but did not outperform the original G²RPO run.
