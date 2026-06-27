@@ -62,6 +62,8 @@ Before the final run, I also tested a closer Qwen-VL model. It reached a functio
 
 G²RPO mainly improved format and structure reliability, while math accuracy improved only slightly.
 This means the main improvement is not a large jump in reasoning ability, but a much more stable ability to produce answers in the required format.
+FS-G²RPO was added as a small formula-level follow-up experiment, based on this observation. It improved format and structure compared with GRPO, but did not outperform the original G²RPO run.
+This suggests that explicitly increasing the weight of format and structure was not better than the original G²RPO normalization in this small Math12K setup.
 
 ---
 
@@ -76,8 +78,9 @@ The examples below were selected from the saved per-example validation outputs o
 | ------ | --------------------------------------- | ----: |
 | GRPO   | Long reasoning, but no final `<answer>` |   0.0 |
 | G²RPO  | `<answer>75</answer>`                   |   1.5 |
+| FS-G²RPO | Long reasoning, but no final formatted answer | 0.0 |
 
-**What happened:** G²RPO produced both the correct answer and the required format. GRPO started reasoning but failed to produce a valid final answer.
+**What happened:** G²RPO produced both the correct answer and the required format. GRPO started reasoning but failed to produce a valid final answer. FS-G²RPO behaved more similarly to GRPO in this example: it started reasoning, but did not produce a valid final formatted answer.
 
 ---
 
@@ -90,8 +93,9 @@ The examples below were selected from the saved per-example validation outputs o
 | ------ | ---------------------------------------------------------- | ----: |
 | GRPO   | Started solving but did not reach a final formatted answer |   0.0 |
 | G²RPO  | `<answer>$$\frac{1}{3}$$</answer>`                         |   1.5 |
+| FS-G²RPO | Started solving but did not reach a final formatted answer | 0.0 |
 
-**What happened:** G²RPO gave a short and valid final answer. This matches the strong improvement in format and structure scores.
+**What happened:** G²RPO gave a short and valid final answer. This matches the strong improvement in format and structure scores. FS-G²RPO did not preserve this improvement in this example, which matches the lower format and structure scores in the final metrics.
 
 ---
 
@@ -104,8 +108,9 @@ The examples below were selected from the saved per-example validation outputs o
 | ------ | ---------------------------------------------- | ----: |
 | GRPO   | Long incomplete reasoning, no final `<answer>` |   0.0 |
 | G²RPO  | `<answer>1</answer>`                           |   0.6 |
+| FS-G²RPO | `<answer>$$\frac{1}{2}$$</answer>`           |   0.6 |
 
-**What happened:** G²RPO was mathematically wrong, but still received partial reward because it followed the required answer structure. This shows that the improvement is mostly structural, not purely mathematical.
+**What happened:** Both G²RPO and FS-G²RPO followed the required answer structure but gave a mathematically wrong answer. This supports the same qualitative conclusion: the improvement is mostly structural, not purely mathematical.
 
 ---
 
@@ -121,5 +126,6 @@ In this experiment, G²RPO did not dramatically improve mathematical correctness
 ```
 
 This matches the algorithmic difference: G²RPO changes how rewards are converted into advantages. As a result, partial reward components can have a clearer effect during training.
+FS-G²RPO sometimes preserved the structural behavior, but not consistently. Overall, it did not match the stronger format and structure reliability of the original G²RPO run.
 
 **Main conclusion:** G²RPO mainly improved output organization and format reliability. The improvement in math accuracy was smaller.
