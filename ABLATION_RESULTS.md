@@ -15,8 +15,9 @@ Therefore, I implemented a small controlled ablation that compares GRPO and G²R
 The two runs used the same training pipeline.  
 The only changed parameter was the advantage estimator:
 
-- GRPO: `algorithm.adv_estimator=grpo`
-- G²RPO: `algorithm.adv_estimator=gs_grpo`
+* GRPO: `algorithm.adv_estimator=grpo`
+* G²RPO: `algorithm.adv_estimator=gs_grpo`
+* FS-G²RPO: `algorithm.adv_estimator=fs_gs_grpo`
 
 In standard GRPO, rewards are normalized within the sampled responses of the same prompt using the group mean and standard deviation.
 
