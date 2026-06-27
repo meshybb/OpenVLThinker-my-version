@@ -121,13 +121,30 @@ The final ablation used:
 
 Final results:
 
-| Algorithm | Steps | Validation reward | Math accuracy | Format | Structure |
-| --------- | ----: | ----------------: | ------------: | -----: | --------: |
-| GRPO      |    50 |             0.135 |          0.15 |   0.00 |     0.000 |
-| G²RPO     |    50 |             0.162 |          0.16 |   0.03 |     0.015 |
+| Algorithm | Steps | Train | Val | Validation Reward | Math Accuracy | Format | Structure |
+| --------- | ----: | ----: | --: | ----------------: | ------------: | -----: | --------: |
+| GRPO      |    50 |   256 | 100 |             0.063 |          0.07 |   0.00 |     0.000 |
+| G²RPO     |    50 |   256 | 100 |             0.678 |          0.12 |   0.95 |     0.475 |
 
 ## 8. Final Takeaway
 
 The final controlled ablation showed that G²RPO slightly outperformed GRPO under the same local setup.
 
 The experiment is not a full reproduction of the original paper. It is a small-scale engineering reproduction and ablation under limited university compute.
+
+
+## 9. Connection to the G²RPO Formula
+
+The qualitative examples suggest that G²RPO provides a clearer training signal for partial reward components such as **format** and **structure**.
+
+Compared with GRPO, G²RPO changes how rewards are converted into advantages. In this small experiment, that seems to help the model consistently learn the required output pattern:
+
+```text
+<thinking>...</thinking>
+<answer>...</answer>
+```
+
+Therefore, the main conclusion is:
+
+**G²RPO improves output organization and format reliability more clearly than mathematical correctness.**
+The math accuracy improves only slightly, but the format and structure rewards improve substantially.
